@@ -5,22 +5,16 @@
 
     <group android:checkableBehavior="single">
         <item
-            android:id="@+id/nav_home"
-            android:icon="@drawable/ic_menu_camera"
-            android:title="@string/menu_home" />
-        <item
-            android:id="@+id/nav_gallery"
-            android:icon="@drawable/ic_menu_gallery"
-            android:title="@string/menu_gallery" />
-        <item
-            android:id="@+id/nav_slideshow"
-            android:icon="@drawable/ic_menu_slideshow"
-            android:title="@string/menu_slideshow" />
-        <item
             android:id="@+id/nav_breeds"
             android:title="@string/breeds" />
         <item
+            android:id="@+id/nav_housing_and_equipment"
+            android:title="@string/housing_and_equipment" />
+        <item
             android:id="@+id/nav_brooding"
             android:title="@string/brooding" />
+        <item
+            android:id="@+id/nav_poultry_management"
+            android:title="@string/poultry_management" />
     </group>
 </menu>

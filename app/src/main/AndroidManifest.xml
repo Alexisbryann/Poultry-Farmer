@@ -8,12 +8,12 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme">
-        <activity android:name=".Brooding"></activity>
+        android:theme="@style/Theme.AppCompat.Light">
+        <activity android:name=".PoultryManagement" />
         <activity
             android:name=".MainActivity"
-            android:label="@string/app_name"
-            android:theme="@style/AppTheme.NoActionBar">
+            android:label="Kuku"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -21,8 +21,15 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".BreedsActivity"
-            android:label="Breeds" />
+            android:name=".Breeds"
+            android:label="@string/breeds"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar"/>
+        <activity
+            android:name=".HousingAndEquipment"
+            android:label="Housing and equipment" />
+        <activity
+            android:name=".Brooding"
+            android:label="Brooding" />
     </application>
 
 </manifest>
