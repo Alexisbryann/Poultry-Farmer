@@ -5,9 +5,11 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
+import androidx.navigation.ui.AppBarConfiguration;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Toast;
@@ -16,25 +18,34 @@ import com.google.android.material.navigation.NavigationView;
 
 public class Breeds extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener{
 
+    private AppBarConfiguration mAppBarConfiguration;
     private DrawerLayout mDrawer;
+    private final String TAG = getClass().getSimpleName();
     
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_breeds);
+        Log.d(TAG,"breeds inflated");
 
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-
-        mDrawer = findViewById(R.id.drawer_layout);
-        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
-                this, mDrawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
-        mDrawer.bringToFront();
-        mDrawer.setDrawerListener(toggle);
-        toggle.syncState();
+        Log.d(TAG,"breeds toolbar inflated");
 
         NavigationView navigationView = findViewById(R.id.nav_view);
+        mDrawer = findViewById(R.id.drawer_layout);
+        Log.d(TAG,"nav view inflated on breeds");
+
+
+        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
+                this, mDrawer,toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
+        mDrawer.bringToFront();
+
+        toggle.syncState();
+
         navigationView.setNavigationItemSelectedListener(this);
+        mAppBarConfiguration = new AppBarConfiguration.Builder().setOpenableLayout(mDrawer).build();
+
     }
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -58,6 +69,7 @@ public class Breeds extends AppCompatActivity implements NavigationView.OnNaviga
             startActivity(breeds);
             overridePendingTransition(android.R.anim.fade_in,android.R.anim.fade_out);
             mDrawer.closeDrawer(GravityCompat.START);
+            finish();
             return true;
         }else if (item.getItemId() == R.id.nav_brooding) {
             Toast.makeText(this,"BROODING",Toast.LENGTH_SHORT).show();
@@ -65,6 +77,7 @@ public class Breeds extends AppCompatActivity implements NavigationView.OnNaviga
             startActivity(brooding);
             overridePendingTransition(android.R.anim.fade_in,android.R.anim.fade_out);
             mDrawer.closeDrawer(GravityCompat.START);
+            finish();
             return true;
         }else if (item.getItemId()==R.id.nav_housing_and_equipment){
             Toast.makeText(this,"HOUSING AND EQUIPMENT",Toast.LENGTH_SHORT).show();
@@ -72,6 +85,7 @@ public class Breeds extends AppCompatActivity implements NavigationView.OnNaviga
             startActivity(housing);
             overridePendingTransition(android.R.anim.fade_in,android.R.anim.fade_out);
             mDrawer.closeDrawer(GravityCompat.START);
+            finish();
             return true;
         }else if (item.getItemId()==R.id.nav_poultry_management){
             Toast.makeText(this,"POULTRY MANAGEMENT",Toast.LENGTH_SHORT).show();
@@ -79,6 +93,7 @@ public class Breeds extends AppCompatActivity implements NavigationView.OnNaviga
             startActivity(management);
             overridePendingTransition(android.R.anim.fade_in,android.R.anim.fade_out);
             mDrawer.closeDrawer(GravityCompat.START);
+            finish();
             return true;
         }
         return false;

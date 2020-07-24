@@ -10,58 +10,58 @@ import androidx.navigation.ui.AppBarConfiguration;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Toast;
 
 import com.google.android.material.navigation.NavigationView;
 
-public class Brooding extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
+public class PoultryManagement extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener{
 
     private AppBarConfiguration mAppBarConfiguration;
     private DrawerLayout mDrawer;
-
+    private final String TAG = getClass().getSimpleName();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_brooding);
+        setContentView(R.layout.activity_poultry_management);
 
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+        Log.d(TAG,"poultry management toolbar inflated");
 
         NavigationView navigationView = findViewById(R.id.nav_view);
         mDrawer = findViewById(R.id.drawer_layout);
+        Log.d(TAG,"nav view inflated from poultry management");
+
 
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this, mDrawer,toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         mDrawer.bringToFront();
-
         toggle.syncState();
 
         navigationView.setNavigationItemSelectedListener(this);
         mAppBarConfiguration = new AppBarConfiguration.Builder().setOpenableLayout(mDrawer).build();
-
-    }
-
-    @Override
-    public void onBackPressed() {
-        if (mDrawer.isDrawerOpen(GravityCompat.START)) {
-            overridePendingTransition(android.R.anim.fade_in,android.R.anim.fade_out);
-            mDrawer.closeDrawer(GravityCompat.START);
-        } else {
-            super.onBackPressed();
-        }
     }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.main, menu);
-        return super.onCreateOptionsMenu(menu);
+        return true;
     }
-
+    @Override
+    public void onBackPressed() {
+        if (mDrawer.isDrawerOpen(GravityCompat.START)) {
+            mDrawer.closeDrawer(GravityCompat.START);
+        } else {
+            super.onBackPressed();
+        }
+    }
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+
         if (item.getItemId() == R.id.nav_breeds) {
             Toast.makeText(this,"BREEDS",Toast.LENGTH_SHORT).show();
             Intent breeds = new Intent(this, Breeds.class);

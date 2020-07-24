@@ -1,12 +1,15 @@
 package com.example.kuku;
 
 import android.content.Intent;
+import android.nfc.Tag;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.Menu;
 import android.widget.Toast;
 
 import com.google.android.material.navigation.NavigationView;
+import com.google.android.material.tabs.TabLayout;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
@@ -20,14 +23,17 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
 //    private AppBarConfiguration mAppBarConfiguration;
     private DrawerLayout mDrawer;
+    private final String TAG = getClass().getSimpleName();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        Log.d(TAG, "Main inflated");
 
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+        Log.d(TAG,"Main toolbar");
 
         mDrawer = findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
@@ -56,6 +62,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     public void onBackPressed() {
         if (mDrawer.isDrawerOpen(GravityCompat.START)) {
             mDrawer.closeDrawer(GravityCompat.START);
+            Log.d(TAG,"Close drawer without selecting any item");
         } else {
             super.onBackPressed();
         }
@@ -63,6 +70,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+        Log.d(TAG,"Navigation drawer opened");
 
         if (item.getItemId() == R.id.nav_breeds) {
             Toast.makeText(this,"BREEDS",Toast.LENGTH_SHORT).show();
@@ -70,6 +78,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             startActivity(breeds);
             overridePendingTransition(android.R.anim.fade_in,android.R.anim.fade_out);
             mDrawer.closeDrawer(GravityCompat.START);
+            Log.d(TAG,"breeds selected");
+            finish();
             return true;
         }else if (item.getItemId() == R.id.nav_brooding) {
             Toast.makeText(this,"BROODING",Toast.LENGTH_SHORT).show();
@@ -77,6 +87,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             startActivity(brooding);
             overridePendingTransition(android.R.anim.fade_in,android.R.anim.fade_out);
             mDrawer.closeDrawer(GravityCompat.START);
+            finish();
             return true;
         }else if (item.getItemId()==R.id.nav_housing_and_equipment){
             Toast.makeText(this,"HOUSING AND EQUIPMENT",Toast.LENGTH_SHORT).show();
@@ -84,6 +95,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             startActivity(housing);
             overridePendingTransition(android.R.anim.fade_in,android.R.anim.fade_out);
             mDrawer.closeDrawer(GravityCompat.START);
+            finish();
             return true;
         }else if (item.getItemId()==R.id.nav_poultry_management){
             Toast.makeText(this,"POULTRY MANAGEMENT",Toast.LENGTH_SHORT).show();
@@ -91,6 +103,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             startActivity(management);
             overridePendingTransition(android.R.anim.fade_in,android.R.anim.fade_out);
             mDrawer.closeDrawer(GravityCompat.START);
+            finish();
             return true;
         }
         return false;
