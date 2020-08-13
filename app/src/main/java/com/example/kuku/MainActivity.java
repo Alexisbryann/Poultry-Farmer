@@ -1,7 +1,6 @@
 package com.example.kuku;
 
 import android.content.Intent;
-import android.nfc.Tag;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.MenuItem;
@@ -9,21 +8,27 @@ import android.view.Menu;
 import android.widget.Toast;
 
 import com.google.android.material.navigation.NavigationView;
-import com.google.android.material.tabs.TabLayout;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.core.view.GravityCompat;
-import androidx.navigation.ui.AppBarConfiguration;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
+import java.util.List;
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
 //    private AppBarConfiguration mAppBarConfiguration;
     private DrawerLayout mDrawer;
     private final String TAG = getClass().getSimpleName();
+    private RecyclerView mRecyclerItems;
+    private LinearLayoutManager mBreedsLayoutManager;
+    private DataBaseOpenHelper mDbOpenHelper;
+    private BreedsRecyclerAdapter mBreedsRecyclerAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,6 +40,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         setSupportActionBar(toolbar);
         Log.d(TAG,"Main toolbar");
 
+        mDbOpenHelper = new DataBaseOpenHelper(this);
+
         mDrawer = findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this, mDrawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
@@ -44,12 +51,37 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         NavigationView navigationView = findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
 
-//        mAppBarConfiguration = new AppBarConfiguration.Builder(
-//        ).setOpenableLayout(mDrawer).build();
-//
-//        NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
-//        NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
-//        NavigationUI.setupWithNavController(navigationView, navController);
+        initializeDisplayContent();
+    }
+
+    @Override
+    protected void onDestroy() {
+        mDbOpenHelper.close();
+        super.onDestroy();
+    }
+
+    private void initializeDisplayContent() {
+        DataManager.loadFromDatabase(mDbOpenHelper);
+        mRecyclerItems = findViewById(R.id.item_breed);
+        mBreedsLayoutManager = new LinearLayoutManager(this);
+
+        mBreedsRecyclerAdapter = new BreedsRecyclerAdapter(this,null);
+        List<BreedInfo> breeds = DataManager.getInstance().getBreeds();
+
+        displayBreeds();
+    }
+
+    private void displayBreeds() {
+        mRecyclerItems.setLayoutManager(mBreedsLayoutManager);
+        mRecyclerItems.setAdapter(mBreedsRecyclerAdapter);
+
+        selectNavigationMenuItem(R.id.nav_breeds);
+    }
+
+    private void selectNavigationMenuItem(int id) {
+        NavigationView navigationView = findViewById(R.id.nav_view);
+        Menu menu = navigationView.getMenu();
+        menu.findItem(id).setChecked(true);
     }
 
     @Override
@@ -70,7 +102,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-        Log.d(TAG,"Navigation drawer opened");
+        Log.d(TAG,"Main activity Navigation drawer opened");
 
         if (item.getItemId() == R.id.nav_breeds) {
             Toast.makeText(this,"BREEDS",Toast.LENGTH_SHORT).show();
@@ -78,7 +110,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             startActivity(breeds);
             overridePendingTransition(android.R.anim.fade_in,android.R.anim.fade_out);
             mDrawer.closeDrawer(GravityCompat.START);
-            Log.d(TAG,"breeds selected");
             finish();
             return true;
         }else if (item.getItemId() == R.id.nav_brooding) {
@@ -101,6 +132,30 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             Toast.makeText(this,"POULTRY MANAGEMENT",Toast.LENGTH_SHORT).show();
             Intent management = new Intent(this,PoultryManagement.class);
             startActivity(management);
+            overridePendingTransition(android.R.anim.fade_in,android.R.anim.fade_out);
+            mDrawer.closeDrawer(GravityCompat.START);
+            finish();
+            return true;
+        }else if (item.getItemId()==R.id.nav_common_diseases){
+            Toast.makeText(this,"COMMON DISEASES", Toast.LENGTH_SHORT).show();
+            Intent commonDiseases = new Intent(this,CommonDiseases.class);
+            startActivity(commonDiseases);
+            overridePendingTransition(android.R.anim.fade_in,android.R.anim.fade_out);
+            mDrawer.closeDrawer(GravityCompat.START);
+            finish();
+            return true;
+        }else if (item.getItemId()==R.id.nav_best_practice){
+            Toast.makeText(this,"BEST PRACTICE", Toast.LENGTH_SHORT).show();
+            Intent bestPractice = new Intent(this,BestPractice.class);
+            startActivity(bestPractice);
+            overridePendingTransition(android.R.anim.fade_in,android.R.anim.fade_out);
+            mDrawer.closeDrawer(GravityCompat.START);
+            finish();
+            return true;
+        }else if (item.getItemId()==R.id.nav_bad_habits){
+            Toast.makeText(this,"BAD HABITS", Toast.LENGTH_SHORT).show();
+            Intent badHabits = new Intent(this,BadHabits.class);
+            startActivity(badHabits);
             overridePendingTransition(android.R.anim.fade_in,android.R.anim.fade_out);
             mDrawer.closeDrawer(GravityCompat.START);
             finish();

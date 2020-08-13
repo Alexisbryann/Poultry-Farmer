@@ -1,5 +1,12 @@
 package com.example.kuku;
 
+import android.content.Intent;
+import android.os.Bundle;
+
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.google.android.material.navigation.NavigationView;
+import com.google.android.material.snackbar.Snackbar;
+
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
@@ -8,16 +15,13 @@ import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.navigation.ui.AppBarConfiguration;
 
-import android.content.Intent;
-import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.Toast;
 
-import com.google.android.material.navigation.NavigationView;
-
-public class Brooding extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
+public class BestPractice extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
     private AppBarConfiguration mAppBarConfiguration;
     private DrawerLayout mDrawer;
@@ -26,13 +30,16 @@ public class Brooding extends AppCompatActivity implements NavigationView.OnNavi
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_brooding);
+        setContentView(R.layout.activity_best_practice);
 
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+        Log.d(TAG,"best practice toolbar inflated");
 
         NavigationView navigationView = findViewById(R.id.nav_view);
         mDrawer = findViewById(R.id.drawer_layout);
+        Log.d(TAG,"nav view inflated on best practise");
+
 
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this, mDrawer,toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
@@ -44,27 +51,23 @@ public class Brooding extends AppCompatActivity implements NavigationView.OnNavi
         mAppBarConfiguration = new AppBarConfiguration.Builder().setOpenableLayout(mDrawer).build();
 
     }
-
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.main, menu);
+        return true;
+    }
     @Override
     public void onBackPressed() {
         if (mDrawer.isDrawerOpen(GravityCompat.START)) {
-            overridePendingTransition(android.R.anim.fade_in,android.R.anim.fade_out);
             mDrawer.closeDrawer(GravityCompat.START);
         } else {
             super.onBackPressed();
         }
     }
-
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.main, menu);
-        return super.onCreateOptionsMenu(menu);
-    }
-
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
 
-        Log.d(TAG,"Brooding Navigation drawer opened");
+        Log.d(TAG,"Best practice Navigation drawer opened");
 
         if (item.getItemId() == R.id.nav_breeds) {
             Toast.makeText(this,"BREEDS",Toast.LENGTH_SHORT).show();

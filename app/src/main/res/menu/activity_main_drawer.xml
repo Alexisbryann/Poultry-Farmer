@@ -18,5 +18,14 @@
         <item
             android:id="@+id/nav_poultry_management"
             android:title="@string/poultry_management" />
+        <item
+            android:id="@+id/nav_common_diseases"
+            android:title="@string/common_diseases" />
+        <item
+            android:id="@+id/nav_bad_habits"
+            android:title="@string/bad_habits" />
+        <item
+            android:id="@+id/nav_best_practice"
+            android:title="@string/best_practice" />
     </group>
 </menu>

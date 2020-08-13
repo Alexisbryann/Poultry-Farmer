@@ -11,9 +11,19 @@
     <string name="breeds">Breeds</string>
     <string name="brooding">Brooding</string>
     <string name="purpose">Purpose</string>
-    <!-- Strings used for fragments for navigation -->
     <string name="housing_and_equipment">Housing and equipment</string>
     <string name="breed">Breed</string>
     <string name="purpose1">purpose</string>
     <string name="poultry_management">Poultry management</string>
+    <string name="common_diseases">Common diseases</string>
+    <string name="bad_habits">Bad habits</string>
+    <string name="best_practice">Best practice</string>
+    <string name="title_activity_common_diseases">Common diseases</string>
+    <string name="title_activity_best_practice">Best practice</string>
+    <string name="title_activity_bad_habits">Bad habits</string>
+    <string name="bryankoech7_gmail_com">bryankoech7@gmail.com</string>
+    <string name="todo">TODO</string>
+    <string name="about">This application has all the basic information you need to start a successful poultry farming business in Kenya.</string>
+    <string name="poultry_farming">POULTRY FARMING.</string>
+
 </resources>

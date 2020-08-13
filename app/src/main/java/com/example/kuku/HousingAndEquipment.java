@@ -15,6 +15,7 @@ import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.navigation.ui.AppBarConfiguration;
 
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -24,6 +25,8 @@ public class HousingAndEquipment extends AppCompatActivity implements Navigation
 
     private AppBarConfiguration mAppBarConfiguration;
     private DrawerLayout mDrawer;
+    private final String TAG = getClass().getSimpleName();
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -63,6 +66,8 @@ public class HousingAndEquipment extends AppCompatActivity implements Navigation
 
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+        Log.d(TAG," Housing and equipment Navigation drawer opened");
+
         if (item.getItemId() == R.id.nav_breeds) {
             Toast.makeText(this,"BREEDS",Toast.LENGTH_SHORT).show();
             Intent breeds = new Intent(this, Breeds.class);
@@ -91,6 +96,30 @@ public class HousingAndEquipment extends AppCompatActivity implements Navigation
             Toast.makeText(this,"POULTRY MANAGEMENT",Toast.LENGTH_SHORT).show();
             Intent management = new Intent(this,PoultryManagement.class);
             startActivity(management);
+            overridePendingTransition(android.R.anim.fade_in,android.R.anim.fade_out);
+            mDrawer.closeDrawer(GravityCompat.START);
+            finish();
+            return true;
+        }else if (item.getItemId()==R.id.nav_common_diseases){
+            Toast.makeText(this,"COMMON DISEASES", Toast.LENGTH_SHORT).show();
+            Intent commonDiseases = new Intent(this,CommonDiseases.class);
+            startActivity(commonDiseases);
+            overridePendingTransition(android.R.anim.fade_in,android.R.anim.fade_out);
+            mDrawer.closeDrawer(GravityCompat.START);
+            finish();
+            return true;
+        }else if (item.getItemId()==R.id.nav_best_practice){
+            Toast.makeText(this,"BEST PRACTICE", Toast.LENGTH_SHORT).show();
+            Intent bestPractice = new Intent(this,BestPractice.class);
+            startActivity(bestPractice);
+            overridePendingTransition(android.R.anim.fade_in,android.R.anim.fade_out);
+            mDrawer.closeDrawer(GravityCompat.START);
+            finish();
+            return true;
+        }else if (item.getItemId()==R.id.nav_bad_habits){
+            Toast.makeText(this,"BAD HABITS", Toast.LENGTH_SHORT).show();
+            Intent badHabits = new Intent(this,BadHabits.class);
+            startActivity(badHabits);
             overridePendingTransition(android.R.anim.fade_in,android.R.anim.fade_out);
             mDrawer.closeDrawer(GravityCompat.START);
             finish();
