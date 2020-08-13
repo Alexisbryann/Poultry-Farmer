@@ -16,21 +16,21 @@ public class DataBaseContract implements BaseColumns {
         public static final String COLUMN_CHARACTERISTICS = "characteristics";
 
         // CREATE INDEX course_info_index1 ON course_info (course_title)
-        public static final String INDEX1 = TABLE_NAME + "_index1";
-        public static final String SQL_CREATE_INDEX1 =
-                "CREATE INDEX " + INDEX1 + " ON " + TABLE_NAME +
-                        "(" + COLUMN_BREED + ")";
-
-        public static final String getQName(String columnName) {
-            return TABLE_NAME + "." + columnName;
-        }
+//        public static final String INDEX1 = TABLE_NAME + "_index1";
+//        public static final String SQL_CREATE_INDEX1 =
+//                "CREATE INDEX " + INDEX1 + " ON " + TABLE_NAME +
+//                        "(" + COLUMN_BREED + ")";
+//
+//        public static final String getQName(String columnName) {
+//            return TABLE_NAME + "." + columnName;
+//        }
         public static final String SQL_CREATE_TABLE =
-                "CREATE TABLE " + TABLE_NAME + "(" +
-                        _ID + "INTEGER PRIMARY KEY, " +
-                        COLUMN_BREED + " TEXT" +
-                        COLUMN_PURPOSE + " TEXT" +
-                        COLUMN_EXAMPLES + " TEXT" +
-                        COLUMN_CHARACTERISTICS + " TEXT)";
+                "CREATE TABLE " + TABLE_NAME + "("+
+                        _ID+ " INTEGER PRIMARY KEY,"+
+                        COLUMN_BREED+" TEXT,"+
+                        COLUMN_PURPOSE+" TEXT,"+
+                        COLUMN_EXAMPLES+" TEXT,"+
+                        COLUMN_CHARACTERISTICS+" TEXT)";
     }
 
     public static final class HousingAndEquipment implements BaseColumns{

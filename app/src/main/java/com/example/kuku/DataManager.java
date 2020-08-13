@@ -25,7 +25,7 @@ public class DataManager {
                 BreedsEntry.COLUMN_PURPOSE,
                 BreedsEntry.COLUMN_EXAMPLES,
                 BreedsEntry.COLUMN_CHARACTERISTICS};
-        final Cursor breedsCursor = database.query(BreedsEntry.TABLE_NAME,breedsColumns,null,null,null,null,BreedsEntry.COLUMN_BREED+"DESC" );
+        final Cursor breedsCursor = database.query(BreedsEntry.TABLE_NAME,breedsColumns,null,null,null,null,BreedsEntry.COLUMN_BREED + " DESC");
         loadBreedsFromDatabase(breedsCursor);
     }
 

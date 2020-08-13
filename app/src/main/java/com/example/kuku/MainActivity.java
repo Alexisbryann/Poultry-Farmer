@@ -66,7 +66,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         mBreedsLayoutManager = new LinearLayoutManager(this);
 
         mBreedsRecyclerAdapter = new BreedsRecyclerAdapter(this,null);
-        List<BreedInfo> breeds = DataManager.getInstance().getBreeds();
+//        List<BreedInfo> breeds = DataManager.getInstance().getBreeds();
+
 
         displayBreeds();
     }
