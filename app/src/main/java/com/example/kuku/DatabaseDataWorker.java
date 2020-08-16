@@ -11,10 +11,9 @@ public class DatabaseDataWorker {
     public void insertBreeds(){
         insertBreed("Layer.",
 
-                    "Specifically kept for Egg production." +
-                           "Meat from layers is considered a by-product." +
-                           "For commercial layers, the productive period is usually 1 (one)" +
-                            "year at an average production of 240 (Two hundred and forty) - 300 (Three hundred) eggs a year.",
+                    "Specifically kept for Egg production, meat from layers is considered a by-product.",
+//                           "For commercial layers, the productive period is usually 1 (one)" +
+//                            "year at an average production of 240 (Two hundred and forty) - 300 (Three hundred) eggs a year.",
 
                     "Leghorn.",
 
@@ -39,11 +38,11 @@ public class DatabaseDataWorker {
 
         insertBreed("Broiler.",
 
-                    "These are specifically bred for meat production and their meat is very soft." +
-                            "They grow very fast and attain market weight in about 6 (six) to 8 (eight) weeks of age if " +
-                            "fed on feed rations that support their genetic requirements, by this time, they will have consumed about 5.5 kg of feed." +
-                            "They attain live weight of about 2 (two) to 2.5 (two and a half) kg within 7 (seven) to 8 (eight) weeks of age." +
-                            "Their production cycle is relatively short, ranging between 6 (six) to 8 (eight) weeks",
+                    "These are specifically bred for meat production and their meat is very soft." ,
+//                            "They grow very fast and attain market weight in about 6 (six) to 8 (eight) weeks of age if " +
+//                            "fed on feed rations that support their genetic requirements, by this time, they will have consumed about 5.5 kg of feed." +
+//                            "They attain live weight of about 2 (two) to 2.5 (two and a half) kg within 7 (seven) to 8 (eight) weeks of age." +
+//                            "Their production cycle is relatively short, ranging between 6 (six) to 8 (eight) weeks",
 
                     "Plymouth Rock, Cornish, Sussex, Brahma and hybrids",
 
@@ -77,7 +76,7 @@ public class DatabaseDataWorker {
 
         insertBreed("Indigenous (local)",
 
-                    "This is the local chicken. ",
+                    "This is the local chicken. Kept for both its meat and eggs.",
 
                     "",
 
@@ -89,9 +88,9 @@ public class DatabaseDataWorker {
 
         insertBreed("Improved indigenous chicken.",
 
-                    "A number of improved indigenous (kienyeji) chicken have been developed through genetic improvement of the local chicken." +
-                        "This improved breed has superior qualities compared  to local breeds, these qualities include," +
-                        "higher egg production, higher growth rate, higher mature weight and low tendencies for broodiness.",
+                    "Improved indigenous (kienyeji) chicken developed through genetic improvement of the local chicken." ,
+//                        "This improved breed has superior qualities compared  to local breeds, these qualities include," +
+//                        "higher egg production, higher growth rate, higher mature weight and low tendencies for broodiness.",
 
                     "Kenbro chicken.",
 

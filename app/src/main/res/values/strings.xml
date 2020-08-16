@@ -25,5 +25,7 @@
     <string name="todo">TODO</string>
     <string name="about">This application has all the basic information you need to start a successful poultry farming business in Kenya.</string>
     <string name="poultry_farming">POULTRY FARMING.</string>
+    <string name="textview">TextView</string>
+    <string name="image_place_holder">image place holder</string>
 
 </resources>

@@ -9,36 +9,32 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.MenuItem;
 import android.view.Menu;
+import android.view.MenuItem;
 import android.widget.Toast;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.ActionBarDrawerToggle;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
+import androidx.core.view.GravityCompat;
+import androidx.drawerlayout.widget.DrawerLayout;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.kuku.DataBaseContract.BreedsEntry;
 import com.google.android.material.navigation.NavigationView;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.ActionBarDrawerToggle;
-import androidx.core.view.GravityCompat;
-import androidx.drawerlayout.widget.DrawerLayout;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-
-import java.util.List;
-import java.util.Objects;
-
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener
         ,LoaderManager.LoaderCallbacks<Cursor> {
 
-//    private AppBarConfiguration mAppBarConfiguration;
-public static final int LOADER_BREEDS = 0;
+    public static final int LOADER_BREEDS = 0;
     private DrawerLayout mDrawer;
     private final String TAG = getClass().getSimpleName();
+    private BreedsRecyclerAdapter mBreedsRecyclerAdapter;
     private RecyclerView mRecyclerItems;
     private LinearLayoutManager mBreedsLayoutManager;
     private DataBaseOpenHelper mDbOpenHelper;
-    private BreedsRecyclerAdapter mBreedsRecyclerAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -61,7 +57,6 @@ public static final int LOADER_BREEDS = 0;
         navigationView.setNavigationItemSelectedListener(this);
 
         mDbOpenHelper = new DataBaseOpenHelper(this);
-
         initializeDisplayContent();
     }
 
@@ -75,11 +70,11 @@ public static final int LOADER_BREEDS = 0;
 
         DataManager.loadFromDatabase(mDbOpenHelper);
 
-        mRecyclerItems = findViewById(R.id.item_breed);
+        mRecyclerItems = findViewById(R.id.list_breeds);
         mBreedsLayoutManager = new LinearLayoutManager(this);
 
         mBreedsRecyclerAdapter = new BreedsRecyclerAdapter(this,null);
-//        List<BreedInfo> breeds = DataManager.getInstance().getBreeds();
+
 
         displayBreeds();
     }
@@ -107,7 +102,6 @@ public static final int LOADER_BREEDS = 0;
     public void onBackPressed() {
         if (mDrawer.isDrawerOpen(GravityCompat.START)) {
             mDrawer.closeDrawer(GravityCompat.START);
-            Log.d(TAG,"Close drawer without selecting any item");
         } else {
             super.onBackPressed();
         }
@@ -134,22 +128,15 @@ public static final int LOADER_BREEDS = 0;
                 @Override
                 public Cursor loadInBackground() {
                     SQLiteDatabase db = mDbOpenHelper.getReadableDatabase();
-                    final String[] noteColumns = {
+                    final String[] Columns = {
                             BreedsEntry.getQName(BreedsEntry._ID),
                             BreedsEntry.COLUMN_BREED,
                             BreedsEntry.COLUMN_PURPOSE
                     };
 
-                    final String noteOrderBy = BreedsEntry.COLUMN_BREED
-                            +"," + BreedsEntry.COLUMN_PURPOSE;
+                    final String noteOrderBy = BreedsEntry.COLUMN_BREED;
 
-                    // note_info JOIN course_info ON note_info.course_id = course_info.course_id
-//                    String tablesWithJoin = NoteInfoEntry.TABLE_NAME + " JOIN " +
-//                            CourseInfoEntry.TABLE_NAME + " ON " +
-//                            NoteInfoEntry.getQName(NoteInfoEntry.COLUMN_COURSE_ID) + " = " +
-//                            CourseInfoEntry.getQName( CourseInfoEntry.COLUMN_COURSE_ID);
-
-                    return db.query( BreedsEntry.TABLE_NAME,noteColumns,
+                    return db.query( BreedsEntry.TABLE_NAME,Columns,
                             null, null, null, null, noteOrderBy);
                 }
             };
