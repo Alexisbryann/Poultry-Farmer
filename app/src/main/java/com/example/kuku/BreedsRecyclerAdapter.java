@@ -22,6 +22,7 @@ public class BreedsRecyclerAdapter extends RecyclerView.Adapter<BreedsRecyclerAd
     private int mIdPos;
 
     public BreedsRecyclerAdapter(Context context, Cursor cursor) {
+
         mContext = context;
         mCursor = cursor;
         mLayoutInflater = LayoutInflater.from(mContext);
