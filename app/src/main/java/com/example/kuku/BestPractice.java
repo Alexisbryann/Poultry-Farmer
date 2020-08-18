@@ -3,9 +3,7 @@ package com.example.kuku;
 import android.content.Intent;
 import android.os.Bundle;
 
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.navigation.NavigationView;
-import com.google.android.material.snackbar.Snackbar;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
@@ -18,7 +16,6 @@ import androidx.navigation.ui.AppBarConfiguration;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
 import android.widget.Toast;
 
 public class BestPractice extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
@@ -71,7 +68,7 @@ public class BestPractice extends AppCompatActivity implements NavigationView.On
 
         if (item.getItemId() == R.id.nav_breeds) {
             Toast.makeText(this,"BREEDS",Toast.LENGTH_SHORT).show();
-            Intent breeds = new Intent(this, Breeds.class);
+            Intent breeds = new Intent(this, BreedsActivity.class);
             startActivity(breeds);
             overridePendingTransition(android.R.anim.fade_in,android.R.anim.fade_out);
             mDrawer.closeDrawer(GravityCompat.START);

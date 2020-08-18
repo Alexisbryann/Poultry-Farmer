@@ -27,5 +27,6 @@
     <string name="poultry_farming">POULTRY FARMING.</string>
     <string name="textview">TextView</string>
     <string name="image_place_holder">image place holder</string>
+    <string name="text_view_description">TextView</string>
 
 </resources>

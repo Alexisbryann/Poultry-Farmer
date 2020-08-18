@@ -154,4 +154,22 @@ public class DatabaseDataWorker {
 
         long newRowId = mDb.insert(DataBaseContract.BreedsEntry.TABLE_NAME,null,values);
     }
+
+    public void insertMains(){
+        insertMain( "Breeds", "Discusses various chicken breeds and their characteristics.");
+        insertMain("Housing and equipment","Recommendations on requirements and consideration while building a chicken coop.");
+        insertMain("Brooding","Describes how to provide heat for newly hatched chicks.");
+        insertMain("Poultry management","Entails various systems you can use to rear your chicken.");
+        insertMain("Poultry health management","Directions on how to ensure a healthy flock and diagnose common diseases early.");
+        insertMain("Bad Habits","Describes common bad habits among poultry and how to manage the vices.");
+        insertMain("Best practice","Entails standard techniques and management strategies.");
+    }
+    private void insertMain(String title, String description){
+        ContentValues values = new ContentValues();
+
+        values.put(DataBaseContract.MainEntry.COLUMN_TITLE,title);
+        values.put(DataBaseContract.MainEntry.COLUMN_DESCRIPTION,description);
+
+        long newRowId = mDb.insert(DataBaseContract.MainEntry.TABLE_NAME,null,values);
+    }
 }

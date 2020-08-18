@@ -22,18 +22,19 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.kuku.DataBaseContract.BreedsEntry;
 import com.google.android.material.navigation.NavigationView;
+
+import static com.example.kuku.DataBaseContract.*;
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener
         ,LoaderManager.LoaderCallbacks<Cursor> {
 
-    public static final int LOADER_BREEDS = 0;
+    public static final int LOADER_MAIN = 0;
     private DrawerLayout mDrawer;
     private final String TAG = getClass().getSimpleName();
-    private BreedsRecyclerAdapter mBreedsRecyclerAdapter;
+    private MainActivityRecyclerAdapter mMainActivityRecyclerAdapter;
     private RecyclerView mRecyclerItems;
-    private LinearLayoutManager mBreedsLayoutManager;
+    private LinearLayoutManager mMainLayoutManager;
     private DataBaseOpenHelper mDbOpenHelper;
 
     @Override
@@ -66,30 +67,38 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         super.onDestroy();
     }
 
+    @Override
+    protected void onResume() {
+        super.onResume();
+        mMainActivityRecyclerAdapter.notifyDataSetChanged();
+        getLoaderManager().restartLoader(LOADER_MAIN, null, this);
+
+        updateNavHeader();
+    }
+
     private void initializeDisplayContent() {
 
         DataManager.loadFromDatabase(mDbOpenHelper);
 
-        mRecyclerItems = findViewById(R.id.list_breeds);
-        mBreedsLayoutManager = new LinearLayoutManager(this);
+        mRecyclerItems = findViewById(R.id.list_main);
+        mMainLayoutManager = new LinearLayoutManager(this);
 
-        mBreedsRecyclerAdapter = new BreedsRecyclerAdapter(this,null);
+        mMainActivityRecyclerAdapter = new MainActivityRecyclerAdapter(this,null);
 
 
-        displayBreeds();
+        displayMain();
     }
+    private void displayMain() {
+        mRecyclerItems.setLayoutManager(mMainLayoutManager);
+        mRecyclerItems.setAdapter(mMainActivityRecyclerAdapter);
 
-    private void displayBreeds() {
-        mRecyclerItems.setLayoutManager(mBreedsLayoutManager);
-        mRecyclerItems.setAdapter(mBreedsRecyclerAdapter);
-
-        selectNavigationMenuItem(R.id.nav_breeds);
-    }
-
-    private void selectNavigationMenuItem(int id) {
-        NavigationView navigationView = findViewById(R.id.nav_view);
-        Menu menu = navigationView.getMenu();
-        menu.findItem(id).setChecked(true);
+//        selectNavigationMenuItem();
+//    }
+//
+//    private void selectNavigationMenuItem() {
+//        NavigationView navigationView = findViewById(R.id.nav_view);
+//        Menu menu = navigationView.getMenu();
+//        menu.findItem(id).setChecked(true);
     }
 
     @Override
@@ -106,16 +115,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             super.onBackPressed();
         }
     }
-
-    @Override
-    protected void onResume() {
-        super.onResume();
-
-        getLoaderManager().restartLoader(LOADER_BREEDS, null, this);
-
-        updateNavHeader();
-    }
-
     private void updateNavHeader() {
 
     }
@@ -123,21 +122,20 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     @Override
     public Loader<Cursor> onCreateLoader(int i, Bundle bundle) {
         CursorLoader loader = null;
-        if(i == LOADER_BREEDS) {
+        if(i == LOADER_MAIN) {
             loader = new CursorLoader(this) {
                 @Override
                 public Cursor loadInBackground() {
                     SQLiteDatabase db = mDbOpenHelper.getReadableDatabase();
                     final String[] Columns = {
-                            BreedsEntry.getQName(BreedsEntry._ID),
-                            BreedsEntry.COLUMN_BREED,
-                            BreedsEntry.COLUMN_PURPOSE
+                            MainEntry.getQName(MainEntry._ID),
+                            MainEntry.COLUMN_TITLE,
+                            MainEntry.COLUMN_DESCRIPTION
                     };
+                    final String mainOrderBy = MainEntry.COLUMN_TITLE;
 
-                    final String noteOrderBy = BreedsEntry.COLUMN_BREED;
-
-                    return db.query( BreedsEntry.TABLE_NAME,Columns,
-                            null, null, null, null, noteOrderBy);
+                    return db.query( MainEntry.TABLE_NAME,Columns,
+                            null, null, null, null,mainOrderBy);
                 }
             };
         }
@@ -145,14 +143,14 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     }
     @Override
     public void onLoadFinished(Loader loader, Cursor data) {
-        if(loader.getId() == LOADER_BREEDS)  {
-            mBreedsRecyclerAdapter.changeCursor(data);
+        if(loader.getId() == LOADER_MAIN)  {
+            mMainActivityRecyclerAdapter.changeCursor(data);
         }
     }
     @Override
     public void onLoaderReset(Loader loader) {
-        if(loader.getId() == LOADER_BREEDS)  {
-            mBreedsRecyclerAdapter.changeCursor(null);
+        if(loader.getId() == LOADER_MAIN)  {
+            mMainActivityRecyclerAdapter.changeCursor(null);
         }
     }
     @Override
@@ -161,7 +159,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
         if (item.getItemId() == R.id.nav_breeds) {
             Toast.makeText(this,"BREEDS",Toast.LENGTH_SHORT).show();
-            Intent breeds = new Intent(this, Breeds.class);
+            Intent breeds = new Intent(this, BreedsActivity.class);
             startActivity(breeds);
             overridePendingTransition(android.R.anim.fade_in,android.R.anim.fade_out);
             mDrawer.closeDrawer(GravityCompat.START);

@@ -55,6 +55,12 @@ public class Brooding extends AppCompatActivity implements NavigationView.OnNavi
         }
     }
 
+    private void selectNavigationMenuItem() {
+        NavigationView navigationView = findViewById(R.id.nav_view);
+        Menu menu = navigationView.getMenu();
+        menu.findItem(R.id.nav_breeds).setChecked(true);
+    }
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.main, menu);
@@ -68,11 +74,11 @@ public class Brooding extends AppCompatActivity implements NavigationView.OnNavi
 
         if (item.getItemId() == R.id.nav_breeds) {
             Toast.makeText(this,"BREEDS",Toast.LENGTH_SHORT).show();
-            Intent breeds = new Intent(this, Breeds.class);
+            Intent breeds = new Intent(this, BreedsActivity.class);
             startActivity(breeds);
             overridePendingTransition(android.R.anim.fade_in,android.R.anim.fade_out);
             mDrawer.closeDrawer(GravityCompat.START);
-            finish();
+//            finish();
             return true;
         }else if (item.getItemId() == R.id.nav_brooding) {
             Toast.makeText(this,"BROODING",Toast.LENGTH_SHORT).show();
@@ -80,7 +86,7 @@ public class Brooding extends AppCompatActivity implements NavigationView.OnNavi
             startActivity(brooding);
             overridePendingTransition(android.R.anim.fade_in,android.R.anim.fade_out);
             mDrawer.closeDrawer(GravityCompat.START);
-            finish();
+//            finish();
             return true;
         }else if (item.getItemId()==R.id.nav_housing_and_equipment){
             Toast.makeText(this,"HOUSING AND EQUIPMENT",Toast.LENGTH_SHORT).show();
@@ -88,7 +94,7 @@ public class Brooding extends AppCompatActivity implements NavigationView.OnNavi
             startActivity(housing);
             overridePendingTransition(android.R.anim.fade_in,android.R.anim.fade_out);
             mDrawer.closeDrawer(GravityCompat.START);
-            finish();
+//            finish();
             return true;
         }else if (item.getItemId()==R.id.nav_poultry_management){
             Toast.makeText(this,"POULTRY MANAGEMENT",Toast.LENGTH_SHORT).show();
@@ -96,7 +102,7 @@ public class Brooding extends AppCompatActivity implements NavigationView.OnNavi
             startActivity(management);
             overridePendingTransition(android.R.anim.fade_in,android.R.anim.fade_out);
             mDrawer.closeDrawer(GravityCompat.START);
-            finish();
+//            finish();
             return true;
         }else if (item.getItemId()==R.id.nav_common_diseases){
             Toast.makeText(this,"COMMON DISEASES", Toast.LENGTH_SHORT).show();
@@ -104,7 +110,7 @@ public class Brooding extends AppCompatActivity implements NavigationView.OnNavi
             startActivity(commonDiseases);
             overridePendingTransition(android.R.anim.fade_in,android.R.anim.fade_out);
             mDrawer.closeDrawer(GravityCompat.START);
-            finish();
+//            finish();
             return true;
         }else if (item.getItemId()==R.id.nav_best_practice){
             Toast.makeText(this,"BEST PRACTICE", Toast.LENGTH_SHORT).show();
@@ -112,7 +118,7 @@ public class Brooding extends AppCompatActivity implements NavigationView.OnNavi
             startActivity(bestPractice);
             overridePendingTransition(android.R.anim.fade_in,android.R.anim.fade_out);
             mDrawer.closeDrawer(GravityCompat.START);
-            finish();
+//            finish();
             return true;
         }else if (item.getItemId()==R.id.nav_bad_habits){
             Toast.makeText(this,"BAD HABITS", Toast.LENGTH_SHORT).show();
@@ -120,7 +126,7 @@ public class Brooding extends AppCompatActivity implements NavigationView.OnNavi
             startActivity(badHabits);
             overridePendingTransition(android.R.anim.fade_in,android.R.anim.fade_out);
             mDrawer.closeDrawer(GravityCompat.START);
-            finish();
+//            finish();
             return true;
         }
         return false;

@@ -3,13 +3,13 @@ package com.example.kuku;
 import android.os.Parcel;
 import android.os.Parcelable;
 
-public final class BreedInfo implements Parcelable {
+public final class BreedsInfo implements Parcelable {
     private  String mBreed;
     private  String mPurpose;
     private  String mExample;
     private  String mCharacteristics;
 
-    public BreedInfo (String breed, String purpose, String example, String characteristics ){
+    public BreedsInfo(String breed, String purpose, String example, String characteristics ){
 
         mBreed = breed;
         mPurpose = purpose;
@@ -17,22 +17,22 @@ public final class BreedInfo implements Parcelable {
         mCharacteristics = characteristics;
     }
 
-    protected BreedInfo(Parcel in) {
+    protected BreedsInfo(Parcel in) {
         mBreed = in.readString();
         mPurpose = in.readString();
         mExample = in.readString();
         mCharacteristics = in.readString();
     }
 
-    public static final Creator<BreedInfo> CREATOR = new Creator<BreedInfo>() {
+    public static final Creator<BreedsInfo> CREATOR = new Creator<BreedsInfo>() {
         @Override
-        public BreedInfo createFromParcel(Parcel in) {
-            return new BreedInfo(in);
+        public BreedsInfo createFromParcel(Parcel in) {
+            return new BreedsInfo(in);
         }
 
         @Override
-        public BreedInfo[] newArray(int size) {
-            return new BreedInfo[size];
+        public BreedsInfo[] newArray(int size) {
+            return new BreedsInfo[size];
         }
     };
 

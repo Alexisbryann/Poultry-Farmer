@@ -27,13 +27,13 @@ import com.google.android.material.navigation.NavigationView;
 
 import static com.example.kuku.DataBaseContract.*;
 
-public class Breeds extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener, LoaderManager.LoaderCallbacks<Cursor> {
+public class BreedsActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener, LoaderManager.LoaderCallbacks<Cursor> {
 
     public static final int LOADER_BREEDS = 0;
     private DrawerLayout mDrawer;
     private final String TAG = getClass().getSimpleName();
-    private BreedsRecyclerAdapter mBreedsRecyclerAdapter;
-    private RecyclerView mRecyclerItems;
+    private BreedsActivityRecyclerAdapter mBreedsActivityRecyclerAdapter;
+    private RecyclerView mRecyclerList;
     private LinearLayoutManager mBreedsLayoutManager;
     private DataBaseOpenHelper mDbOpenHelper;
 
@@ -67,14 +67,14 @@ public class Breeds extends AppCompatActivity implements NavigationView.OnNaviga
     }
     @Override
     protected void onDestroy() {
-//        mDbOpenHelper.close();
+        mDbOpenHelper.close();
         super.onDestroy();
     }
 
     @Override
     protected void onResume() {
         super.onResume();
-        mBreedsRecyclerAdapter.notifyDataSetChanged();
+        mBreedsActivityRecyclerAdapter.notifyDataSetChanged();
         getLoaderManager().restartLoader(LOADER_BREEDS, null, this);
     }
 
@@ -82,26 +82,25 @@ public class Breeds extends AppCompatActivity implements NavigationView.OnNaviga
 
         DataManager.loadFromDatabase(mDbOpenHelper);
 
-        mRecyclerItems = findViewById(R.id.list_breeds);
+        mRecyclerList = findViewById(R.id.list_main);
         mBreedsLayoutManager = new LinearLayoutManager(this);
 
-        mBreedsRecyclerAdapter = new BreedsRecyclerAdapter(this,null);
+        mBreedsActivityRecyclerAdapter = new BreedsActivityRecyclerAdapter(this,null);
 
 
         displayBreeds();
     }
-
     private void displayBreeds() {
-        mRecyclerItems.setLayoutManager(mBreedsLayoutManager);
-        mRecyclerItems.setAdapter(mBreedsRecyclerAdapter);
+        mRecyclerList.setLayoutManager(mBreedsLayoutManager);
+        mRecyclerList.setAdapter(mBreedsActivityRecyclerAdapter);
 
-        selectNavigationMenuItem(R.id.nav_breeds);
+        selectNavigationMenuItem();
     }
 
-    private void selectNavigationMenuItem(int id) {
+    private void selectNavigationMenuItem() {
         NavigationView navigationView = findViewById(R.id.nav_view);
         Menu menu = navigationView.getMenu();
-        menu.findItem(id).setChecked(true);
+        menu.findItem(R.id.nav_breeds).setChecked(true);
     }
 
     @Override
@@ -132,10 +131,10 @@ public class Breeds extends AppCompatActivity implements NavigationView.OnNaviga
                             BreedsEntry.COLUMN_BREED,
                             BreedsEntry.COLUMN_PURPOSE
                     };
-                    final String noteOrderBy = BreedsEntry.COLUMN_BREED;
+                    final String breedOrderBy = BreedsEntry.COLUMN_BREED;
 
                     return db.query( BreedsEntry.TABLE_NAME,Columns,
-                            null, null, null, null, noteOrderBy);
+                            null, null, null, null, breedOrderBy);
                 }
             };
         }
@@ -144,16 +143,15 @@ public class Breeds extends AppCompatActivity implements NavigationView.OnNaviga
     @Override
     public void onLoadFinished(Loader loader, Cursor data) {
         if(loader.getId() == LOADER_BREEDS)  {
-            mBreedsRecyclerAdapter.changeCursor(data);
+            mBreedsActivityRecyclerAdapter.changeCursor(data);
         }
     }
     @Override
     public void onLoaderReset(Loader loader) {
         if(loader.getId() == LOADER_BREEDS)  {
-            mBreedsRecyclerAdapter.changeCursor(null);
+            mBreedsActivityRecyclerAdapter.changeCursor(null);
         }
     }
-
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
 
@@ -161,7 +159,7 @@ public class Breeds extends AppCompatActivity implements NavigationView.OnNaviga
 
         if (item.getItemId() == R.id.nav_breeds) {
             Toast.makeText(this,"BREEDS",Toast.LENGTH_SHORT).show();
-            Intent breeds = new Intent(this, Breeds.class);
+            Intent breeds = new Intent(this, BreedsActivity.class);
             startActivity(breeds);
             overridePendingTransition(android.R.anim.fade_in,android.R.anim.fade_out);
             mDrawer.closeDrawer(GravityCompat.START);

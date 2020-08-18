@@ -10,7 +10,7 @@ import static com.example.kuku.DataBaseContract.*;
 
 public class DataManager {
     private static DataManager ourInstance = null;
-    private List<BreedInfo> mBreeds = new ArrayList<>();
+    private List<BreedsInfo> mBreeds = new ArrayList<>();
 
     public static DataManager getInstance(){
         if (ourInstance == null){
@@ -45,19 +45,19 @@ public class DataManager {
             String examples = breedsCursor.getString(examplesPos);
             String characteristics = breedsCursor.getString(characteristicsPos);
 
-            BreedInfo breedInfo = new BreedInfo(breed,purpose,examples,characteristics);
+            BreedsInfo breedsInfo = new BreedsInfo(breed,purpose,examples,characteristics);
 
-            dm.mBreeds.add(breedInfo);
+            dm.mBreeds.add(breedsInfo);
         }
         breedsCursor.close();
     }
 
-    public List<BreedInfo> getBreeds() {return mBreeds;}
+    public List<BreedsInfo> getBreeds() {return mBreeds;}
 
-    public BreedInfo getBreed(String id){
-        for (BreedInfo breedInfo:mBreeds){
-            if (id.equals(breedInfo.getBreed()))
-                return breedInfo;
+    public BreedsInfo getBreed(String id){
+        for (BreedsInfo breedsInfo :mBreeds){
+            if (id.equals(breedsInfo.getBreed()))
+                return breedsInfo;
         }
         return null;
     }

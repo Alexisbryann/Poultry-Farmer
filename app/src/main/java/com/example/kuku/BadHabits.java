@@ -67,7 +67,7 @@ public class BadHabits extends AppCompatActivity implements NavigationView.OnNav
 
         if (item.getItemId() == R.id.nav_breeds) {
             Toast.makeText(this,"BREEDS",Toast.LENGTH_SHORT).show();
-            Intent breeds = new Intent(this, Breeds.class);
+            Intent breeds = new Intent(this, BreedsActivity.class);
             startActivity(breeds);
             overridePendingTransition(android.R.anim.fade_in,android.R.anim.fade_out);
             mDrawer.closeDrawer(GravityCompat.START);
