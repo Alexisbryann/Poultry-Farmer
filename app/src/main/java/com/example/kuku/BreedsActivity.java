@@ -75,7 +75,7 @@ public class BreedsActivity extends AppCompatActivity implements NavigationView.
     protected void onResume() {
         super.onResume();
         mBreedsActivityRecyclerAdapter.notifyDataSetChanged();
-        getLoaderManager().restartLoader(LOADER_BREEDS, null, this);
+        getLoaderManager().restartLoader(LOADER_BREEDS, null,this);
     }
 
     private void initializeDisplayContent() {
@@ -116,7 +116,6 @@ public class BreedsActivity extends AppCompatActivity implements NavigationView.
             super.onBackPressed();
         }
     }
-
     @SuppressLint("StaticFieldLeak")
     @Override
     public Loader<Cursor> onCreateLoader(int i, Bundle bundle) {
@@ -129,8 +128,8 @@ public class BreedsActivity extends AppCompatActivity implements NavigationView.
                     final String[] Columns = {
                             BreedsEntry.getQName(BreedsEntry._ID),
                             BreedsEntry.COLUMN_BREED,
-                            BreedsEntry.COLUMN_PURPOSE
-                    };
+                            BreedsEntry.COLUMN_PURPOSE};
+
                     final String breedOrderBy = BreedsEntry.COLUMN_BREED;
 
                     return db.query( BreedsEntry.TABLE_NAME,Columns,
@@ -167,7 +166,7 @@ public class BreedsActivity extends AppCompatActivity implements NavigationView.
             return true;
         }else if (item.getItemId() == R.id.nav_brooding) {
             Toast.makeText(this,"BROODING",Toast.LENGTH_SHORT).show();
-            Intent brooding = new Intent(this, Brooding.class);
+            Intent brooding = new Intent(this, BroodingActivity.class);
             startActivity(brooding);
             overridePendingTransition(android.R.anim.fade_in,android.R.anim.fade_out);
             mDrawer.closeDrawer(GravityCompat.START);
@@ -175,7 +174,7 @@ public class BreedsActivity extends AppCompatActivity implements NavigationView.
             return true;
         }else if (item.getItemId()==R.id.nav_housing_and_equipment){
             Toast.makeText(this,"HOUSING AND EQUIPMENT",Toast.LENGTH_SHORT).show();
-            Intent housing = new Intent(this, HousingAndEquipment.class);
+            Intent housing = new Intent(this, HousingAndEquipmentActivity.class);
             startActivity(housing);
             overridePendingTransition(android.R.anim.fade_in,android.R.anim.fade_out);
             mDrawer.closeDrawer(GravityCompat.START);
@@ -183,7 +182,7 @@ public class BreedsActivity extends AppCompatActivity implements NavigationView.
             return true;
         }else if (item.getItemId()==R.id.nav_poultry_management){
             Toast.makeText(this,"POULTRY MANAGEMENT",Toast.LENGTH_SHORT).show();
-            Intent management = new Intent(this,PoultryManagement.class);
+            Intent management = new Intent(this, PoultryManagementActivity.class);
             startActivity(management);
             overridePendingTransition(android.R.anim.fade_in,android.R.anim.fade_out);
             mDrawer.closeDrawer(GravityCompat.START);
@@ -191,7 +190,7 @@ public class BreedsActivity extends AppCompatActivity implements NavigationView.
             return true;
         }else if (item.getItemId()==R.id.nav_common_diseases){
             Toast.makeText(this,"COMMON DISEASES", Toast.LENGTH_SHORT).show();
-            Intent commonDiseases = new Intent(this,CommonDiseases.class);
+            Intent commonDiseases = new Intent(this, PoultryHealthManagementActivity.class);
             startActivity(commonDiseases);
             overridePendingTransition(android.R.anim.fade_in,android.R.anim.fade_out);
             mDrawer.closeDrawer(GravityCompat.START);
@@ -199,7 +198,7 @@ public class BreedsActivity extends AppCompatActivity implements NavigationView.
             return true;
         }else if (item.getItemId()==R.id.nav_best_practice){
             Toast.makeText(this,"BEST PRACTICE", Toast.LENGTH_SHORT).show();
-            Intent bestPractice = new Intent(this,BestPractice.class);
+            Intent bestPractice = new Intent(this, BestPracticeActivity.class);
             startActivity(bestPractice);
             overridePendingTransition(android.R.anim.fade_in,android.R.anim.fade_out);
             mDrawer.closeDrawer(GravityCompat.START);
@@ -207,7 +206,7 @@ public class BreedsActivity extends AppCompatActivity implements NavigationView.
             return true;
         }else if (item.getItemId()==R.id.nav_bad_habits){
             Toast.makeText(this,"BAD HABITS", Toast.LENGTH_SHORT).show();
-            Intent badHabits = new Intent(this,BadHabits.class);
+            Intent badHabits = new Intent(this, BadHabitsActivity.class);
             startActivity(badHabits);
             overridePendingTransition(android.R.anim.fade_in,android.R.anim.fade_out);
             mDrawer.closeDrawer(GravityCompat.START);

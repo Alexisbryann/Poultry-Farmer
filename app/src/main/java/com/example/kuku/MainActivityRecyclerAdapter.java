@@ -1,6 +1,7 @@
 package com.example.kuku;
 
 import android.content.Context;
+import android.content.Intent;
 import android.database.Cursor;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -12,14 +13,14 @@ import androidx.recyclerview.widget.RecyclerView;
 
 public class MainActivityRecyclerAdapter extends RecyclerView.Adapter<MainActivityRecyclerAdapter.ViewHolder> {
 
-    private final Context mContext;
+    private static Context mContext;
     private Cursor mCursor;
     private final LayoutInflater mLayoutInflater;
     private int mTitlePos;
     private int mTitleDesc;
     private int mIdPos;
 
-    public MainActivityRecyclerAdapter(Context context, Cursor cursor){
+    public MainActivityRecyclerAdapter(Context context, Cursor cursor) {
         mContext = context;
         mCursor = cursor;
         mLayoutInflater = LayoutInflater.from(mContext);
@@ -36,7 +37,7 @@ public class MainActivityRecyclerAdapter extends RecyclerView.Adapter<MainActivi
     }
 
     public void changeCursor(Cursor cursor) {
-        if(mCursor != null)
+        if (mCursor != null)
             mCursor.close();
         mCursor = cursor;
         populateColumnPositions();
@@ -47,7 +48,7 @@ public class MainActivityRecyclerAdapter extends RecyclerView.Adapter<MainActivi
     @Override
     public MainActivityRecyclerAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
 
-        View itemView = mLayoutInflater.inflate(R.layout.items_main,parent,false);
+        View itemView = mLayoutInflater.inflate(R.layout.items_main, parent, false);
         return new ViewHolder(itemView);
     }
 
@@ -65,20 +66,52 @@ public class MainActivityRecyclerAdapter extends RecyclerView.Adapter<MainActivi
     }
 
     @Override
-    public int getItemCount() { return mCursor == null ? 0 :mCursor.getCount(); }
+    public int getItemCount() {
+        return mCursor == null ? 0 : mCursor.getCount();
+    }
 
-    public static class ViewHolder extends RecyclerView.ViewHolder {
+    public static class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
         private final TextView mTextTitle;
         private final TextView mTextDescription;
         public int mId;
 
-
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
 
-            mTextTitle = itemView.findViewById(R.id.text_view_title);
+            itemView.setOnClickListener(this);
+            mTextTitle = itemView.findViewById(R.id.text_view_title_main);
             mTextDescription = itemView.findViewById(R.id.text_view_main_description);
+
+        }
+
+        @Override
+        public void onClick(View view) {
+            int pos = getLayoutPosition();
+
+            switch (pos) {
+                case 0:
+                    mContext.startActivity(new Intent(mContext, BadHabitsActivity.class));
+                    break;
+                case 1:
+                    mContext.startActivity(new Intent(mContext, BestPracticeActivity.class));
+                    break;
+                case 2:
+                    mContext.startActivity(new Intent(mContext, BreedsActivity.class));
+                    break;
+                case 3:
+                    mContext.startActivity(new Intent(mContext, BroodingActivity.class));
+                    break;
+                case 4:
+                    mContext.startActivity(new Intent(mContext, HousingAndEquipmentActivity.class));
+                    break;
+                case 5:
+                    mContext.startActivity(new Intent(mContext, PoultryHealthManagementActivity.class));
+                    break;
+                case 6:
+                    mContext.startActivity(new Intent(mContext, PoultryManagementActivity.class));
+                    break;
+            }
         }
     }
 }

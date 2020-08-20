@@ -1,6 +1,7 @@
 package com.example.kuku;
 
 import android.content.Context;
+import android.content.Intent;
 import android.database.Cursor;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -12,7 +13,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 public class BreedsActivityRecyclerAdapter extends RecyclerView.Adapter<BreedsActivityRecyclerAdapter.ViewHolder> {
 
-    private final Context mContext;
+    private static Context mContext;
     private Cursor mCursor;
     private final LayoutInflater mLayoutInflater;
     private int mBreedPos;
@@ -27,6 +28,7 @@ public class BreedsActivityRecyclerAdapter extends RecyclerView.Adapter<BreedsAc
     }
 
     private void populateColumnPositions() {
+
         if (mCursor == null)
             return;
         mBreedPos = mCursor.getColumnIndex(DataBaseContract.BreedsEntry.COLUMN_BREED);
@@ -56,10 +58,12 @@ public class BreedsActivityRecyclerAdapter extends RecyclerView.Adapter<BreedsAc
 
         String breed = mCursor.getString(mBreedPos);
         String purpose = mCursor.getString(mPurposePos);
+//        String example = mCursor.getString(mExamplePos);
         int id = mCursor.getInt(mIdPos);
 
         holder.mTextBreed.setText(breed);
         holder.mTextPurpose.setText(purpose);
+//        holder.mTextExample.setText(example);
         holder.mId = id;
     }
 
@@ -68,18 +72,30 @@ public class BreedsActivityRecyclerAdapter extends RecyclerView.Adapter<BreedsAc
         return mCursor == null ? 0 : mCursor.getCount();
     }
 
-    public static class ViewHolder extends RecyclerView.ViewHolder {
+    public static class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
         public final TextView mTextBreed;
         public final TextView mTextPurpose;
         public int mId;
+//        private final TextView mTextExample;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
 
+            itemView.setOnClickListener(this);
             mTextBreed = itemView.findViewById(R.id.text_view_breed);
-            mTextPurpose = itemView.findViewById(R.id.text_view_purpose);
+            mTextPurpose = itemView.findViewById(R.id.text_view_main_description);
+//            mTextExample = itemView.findViewById(R.id.text_view_breeds_example);
+        }
 
+        @Override
+        public void onClick(View view) {
+
+            int pos = getLayoutPosition();
+
+            if (pos == 0) {
+                mContext.startActivity(new Intent(mContext, BreedsExamplesActivity.class));
+            }
         }
     }
 }

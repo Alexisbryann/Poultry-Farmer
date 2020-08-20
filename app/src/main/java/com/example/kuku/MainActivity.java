@@ -45,6 +45,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
         Log.d(TAG,"Main toolbar");
 
 
@@ -73,6 +74,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         mMainActivityRecyclerAdapter.notifyDataSetChanged();
         getLoaderManager().restartLoader(LOADER_MAIN, null, this);
 
+        mDrawer.closeDrawer(GravityCompat.START);
         updateNavHeader();
     }
 
@@ -91,14 +93,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     private void displayMain() {
         mRecyclerItems.setLayoutManager(mMainLayoutManager);
         mRecyclerItems.setAdapter(mMainActivityRecyclerAdapter);
-
-//        selectNavigationMenuItem();
-//    }
-//
-//    private void selectNavigationMenuItem() {
-//        NavigationView navigationView = findViewById(R.id.nav_view);
-//        Menu menu = navigationView.getMenu();
-//        menu.findItem(id).setChecked(true);
     }
 
     @Override
@@ -130,8 +124,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                     final String[] Columns = {
                             MainEntry.getQName(MainEntry._ID),
                             MainEntry.COLUMN_TITLE,
-                            MainEntry.COLUMN_DESCRIPTION
-                    };
+                            MainEntry.COLUMN_DESCRIPTION};
+
                     final String mainOrderBy = MainEntry.COLUMN_TITLE;
 
                     return db.query( MainEntry.TABLE_NAME,Columns,
@@ -167,7 +161,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             return true;
         }else if (item.getItemId() == R.id.nav_brooding) {
             Toast.makeText(this,"BROODING",Toast.LENGTH_SHORT).show();
-            Intent brooding = new Intent(this, Brooding.class);
+            Intent brooding = new Intent(this, BroodingActivity.class);
             startActivity(brooding);
             overridePendingTransition(android.R.anim.fade_in,android.R.anim.fade_out);
             mDrawer.closeDrawer(GravityCompat.START);
@@ -175,7 +169,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             return true;
         }else if (item.getItemId()==R.id.nav_housing_and_equipment){
             Toast.makeText(this,"HOUSING AND EQUIPMENT",Toast.LENGTH_SHORT).show();
-            Intent housing = new Intent(this, HousingAndEquipment.class);
+            Intent housing = new Intent(this, HousingAndEquipmentActivity.class);
             startActivity(housing);
             overridePendingTransition(android.R.anim.fade_in,android.R.anim.fade_out);
             mDrawer.closeDrawer(GravityCompat.START);
@@ -183,7 +177,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             return true;
         }else if (item.getItemId()==R.id.nav_poultry_management){
             Toast.makeText(this,"POULTRY MANAGEMENT",Toast.LENGTH_SHORT).show();
-            Intent management = new Intent(this,PoultryManagement.class);
+            Intent management = new Intent(this, PoultryManagementActivity.class);
             startActivity(management);
             overridePendingTransition(android.R.anim.fade_in,android.R.anim.fade_out);
             mDrawer.closeDrawer(GravityCompat.START);
@@ -191,7 +185,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             return true;
         }else if (item.getItemId()==R.id.nav_common_diseases){
             Toast.makeText(this,"COMMON DISEASES", Toast.LENGTH_SHORT).show();
-            Intent commonDiseases = new Intent(this,CommonDiseases.class);
+            Intent commonDiseases = new Intent(this, PoultryHealthManagementActivity.class);
             startActivity(commonDiseases);
             overridePendingTransition(android.R.anim.fade_in,android.R.anim.fade_out);
             mDrawer.closeDrawer(GravityCompat.START);
@@ -199,7 +193,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             return true;
         }else if (item.getItemId()==R.id.nav_best_practice){
             Toast.makeText(this,"BEST PRACTICE", Toast.LENGTH_SHORT).show();
-            Intent bestPractice = new Intent(this,BestPractice.class);
+            Intent bestPractice = new Intent(this, BestPracticeActivity.class);
             startActivity(bestPractice);
             overridePendingTransition(android.R.anim.fade_in,android.R.anim.fade_out);
             mDrawer.closeDrawer(GravityCompat.START);
@@ -207,7 +201,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             return true;
         }else if (item.getItemId()==R.id.nav_bad_habits){
             Toast.makeText(this,"BAD HABITS", Toast.LENGTH_SHORT).show();
-            Intent badHabits = new Intent(this,BadHabits.class);
+            Intent badHabits = new Intent(this, BadHabitsActivity.class);
             startActivity(badHabits);
             overridePendingTransition(android.R.anim.fade_in,android.R.anim.fade_out);
             mDrawer.closeDrawer(GravityCompat.START);

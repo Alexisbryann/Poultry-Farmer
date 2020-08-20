@@ -31,32 +31,43 @@
                 android:layout_height="wrap_content">
 
                 <TextView
-                    android:id="@+id/text_view_title_main"
+                    android:id="@+id/text_view_breeds_example_purpose"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:gravity="fill"
-                    android:text="@string/title_main"
+                    android:text="@string/breeds_purpose"
                     android:textAppearance="@style/TextAppearance.AppCompat.Large"
-                    android:textSize="24sp"
+                    android:textSize="18sp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 
                 <TextView
-                    android:id="@+id/text_view_main_description"
+                    android:id="@+id/text_view_breeds_example_examples"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:gravity="fill"
-                    android:text="@string/main_description"
+                    android:layout_marginTop="28dp"
+                    android:text="@string/breeds_examples"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Large"
+                    android:textSize="18sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.0"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/text_view_breeds_example_purpose" />
+
+                <TextView
+                    android:id="@+id/text_view_breeds_example_characteristics"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="18dp"
+                    android:text="@string/breeds_characteristics"
                     android:textAppearance="@style/TextAppearance.AppCompat.Large"
                     android:textSize="18sp"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="1.0"
+                    app:layout_constraintHorizontal_bias="0.0"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/text_view_title_main"
+                    app:layout_constraintTop_toBottomOf="@+id/text_view_breeds_example_examples"
                     app:layout_constraintVertical_bias="0.0" />
-
             </androidx.constraintlayout.widget.ConstraintLayout>
 
         </androidx.cardview.widget.CardView>

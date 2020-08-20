@@ -143,14 +143,40 @@ public class DatabaseDataWorker {
 //                        "Does quite well in egg production, producing up to 220 (two hundred and twenty) eggs per year .");
     }
 
+    public void insertBroilers(){
+        insertBroiler("PURPOSE. \n" +
+                        "1.Specifically bred for meat production and their meat is very soft.\n" +
+                        "2.They grow very fast and attain market weight in about six to eight weeks of age if"+
+                        "fed on feed rations that support their genetic requirements, by this time, they will have consumed about five and a half kilograms of feed.\n"+
+                        "3.They attain live weight of about two to two and a half kg within seven to eight weeks of age.\n "+
+                        "4.Their production cycle is relatively short, ranging between six to eight weeks.\n",
+                "EXAMPLES. \n" +
+                        "Plymouth Rock, Cornish, Sussex, Brahma and hybrids.",
+                "CHARACTERISTICS. \n" +
+                        "1.Comparatively, weigh much heavier than other poultry breeds.\n" +
+                        "2.Do not go broody.\n" +
+                        "3.Have high feed conversion efficiency.\n" +
+                        "4.Grow very fast.\n" +
+                        "5.They are very poor layers.\n" +
+                        "6.They can grow to a very large size.");
+    }
+
+    private void insertBroiler(String purpose, String example, String characteristics){
+        ContentValues values = new ContentValues();
+        values.put(DataBaseContract.BroilersEntry.COLUMN_PURPOSE,purpose);
+        values.put(DataBaseContract.BroilersEntry.COLUMN_EXAMPLE,example);
+        values.put(DataBaseContract.BroilersEntry.COLUMN_CHARACTERISTICS,characteristics);
+
+        long newRowId = mDb.insert(DataBaseContract.BroilersEntry.TABLE_NAME,null,values);
+    }
     private void insertBreed(String breed, String purpose, String example, String characteristics) {
 
         ContentValues values = new ContentValues();
 
         values.put(DataBaseContract.BreedsEntry.COLUMN_BREED,breed);
         values.put(DataBaseContract.BreedsEntry.COLUMN_PURPOSE,purpose);
-        values.put(DataBaseContract.BreedsEntry.COLUMN_EXAMPLES,example);
-        values.put(DataBaseContract.BreedsEntry.COLUMN_CHARACTERISTICS,characteristics);
+//        values.put(DataBaseContract.BreedsEntry.COLUMN_EXAMPLES,example);
+//        values.put(DataBaseContract.BreedsEntry.COLUMN_CHARACTERISTICS,characteristics);
 
         long newRowId = mDb.insert(DataBaseContract.BreedsEntry.TABLE_NAME,null,values);
     }

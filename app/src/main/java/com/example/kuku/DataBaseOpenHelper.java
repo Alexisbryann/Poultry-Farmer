@@ -22,11 +22,13 @@ public class DataBaseOpenHelper extends SQLiteOpenHelper {
         sqLiteDatabase.execSQL(DataBaseContract.BadHabitsEntry.SQL_CREATE_TABLE);
         sqLiteDatabase.execSQL(DataBaseContract.BestPracticeEntry.SQL_CREATE_TABLE);
         sqLiteDatabase.execSQL(DataBaseContract.MainEntry.SQL_CREATE_TABLE);
+        sqLiteDatabase.execSQL(DataBaseContract.BroilersEntry.SQL_CREATE_TABLE);
 
 
         DatabaseDataWorker worker = new DatabaseDataWorker(sqLiteDatabase);
         worker.insertBreeds();
         worker.insertMains();
+        worker.insertBroilers();
 //        worker.insertHousingAndEquipment();
     }
 

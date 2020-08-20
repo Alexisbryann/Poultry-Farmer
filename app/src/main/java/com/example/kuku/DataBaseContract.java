@@ -135,6 +135,21 @@ public class DataBaseContract implements BaseColumns {
                         _ID + " INTEGER PRIMARY KEY, " +
                         COLUMN_TITLE + " TEXT, " +
                         COLUMN_DESCRIPTION + " TEXT)";
+    }
+    public static final class BroilersEntry implements BaseColumns {
+        public static final String TABLE_NAME = "broilers";
+        public static final String COLUMN_PURPOSE = "purpose";
+        public static final String COLUMN_EXAMPLE = "example";
+        public static final String COLUMN_CHARACTERISTICS = "characteristics";
 
+        public static final String getQName(String columnName) {
+            return TABLE_NAME + "." + columnName;
+        }
+        public static final String SQL_CREATE_TABLE =
+                "CREATE TABLE " + TABLE_NAME + "(" +
+                        _ID + " INTEGER PRIMARY KEY, " +
+                        COLUMN_PURPOSE+ " TEXT, " +
+                        COLUMN_EXAMPLE+ " TEXT, " +
+                        COLUMN_CHARACTERISTICS+ " TEXT)";
     }
 }

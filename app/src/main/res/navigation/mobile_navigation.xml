@@ -12,7 +12,7 @@
         tools:layout="@layout/activity_breeds" />
     <activity
         android:id="@+id/brooding"
-        android:name="com.example.kuku.Brooding"
+        android:name="com.example.kuku.BroodingActivity"
         android:label="activity_brooding"
         tools:layout="@layout/activity_brooding" />
 </navigation>

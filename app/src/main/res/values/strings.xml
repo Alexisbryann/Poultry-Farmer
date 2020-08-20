@@ -13,7 +13,6 @@
     <string name="purpose">Purpose</string>
     <string name="housing_and_equipment">Housing and equipment</string>
     <string name="breed">Breed</string>
-    <string name="purpose1">purpose</string>
     <string name="poultry_management">Poultry management</string>
     <string name="common_diseases">Common diseases</string>
     <string name="bad_habits">Bad habits</string>
@@ -25,8 +24,17 @@
     <string name="todo">TODO</string>
     <string name="about">This application has all the basic information you need to start a successful poultry farming business in Kenya.</string>
     <string name="poultry_farming">POULTRY FARMING.</string>
-    <string name="textview">TextView</string>
     <string name="image_place_holder">image place holder</string>
     <string name="text_view_description">TextView</string>
+    <string name="purpose2">PURPOSE</string>
+    <string name="example">EXAMPLE</string>
+    <string name="characteristics">CHARACTERISTICS</string>
+    <string name="breeds_example">BREEDS EXAMPLE</string>
+    <string name="breeds_purpose">BREEDS PURPOSE</string>
+    <string name="breeds_examples">BREEDS EXAMPLES</string>
+    <string name="breeds_characteristics">BREEDS CHARACTERISTICS</string>
+    <string name="title_main">TITLE MAIN</string>
+    <string name="main_description">MAIN DESCRIPTION</string>
+    <string name="description">Description</string>
 
 </resources>
