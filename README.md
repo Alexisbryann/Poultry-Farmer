@@ -1,5 +1,5 @@
 # Poultry_Farmer
-This app will be a go to quick reference for aspiring poultry farmers in kenya, it shall contain;
+## This app will be a go to quick reference for aspiring poultry farmers in kenya, it shall contain;
 ### Information on chicken breeds.
 ### A guide on correct housing specifications and equipment to install in the chicken coop.
 ### Information on the correct way of brooding.
