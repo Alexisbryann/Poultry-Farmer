@@ -1,6 +1,5 @@
-package com.example.kuku;
+package com.example.kuku.Breeds;
 
-import android.annotation.SuppressLint;
 import android.content.Context;
 import android.database.Cursor;
 import android.view.LayoutInflater;
@@ -10,6 +9,9 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.example.kuku.Database.DataBaseContract;
+import com.example.kuku.R;
 
 public class BreedsExamplesRecyclerAdapter extends RecyclerView.Adapter<BreedsExamplesRecyclerAdapter.ViewHolder> {
 

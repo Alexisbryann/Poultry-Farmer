@@ -9,27 +9,28 @@
         android:roundIcon="@mipmap/ic_header_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.Light.NoActionBar">
-        <activity android:name=".BreedsExamplesActivity"
-            android:parentActivityName=".BreedsActivity"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar"/>
+        <activity android:name=".Breeds.BreedsExamplesActivity"
+            android:parentActivityName=".Breeds.BreedsActivity"
+            android:theme="@style/Theme.AppCompat.Light.DarkActionBar"
+            android:label="BROILERS"/>
         <activity
-            android:name=".BadHabitsActivity"
+            android:name=".BadHabits.BadHabitsActivity"
             android:label="@string/title_activity_bad_habits"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
         <activity
-            android:name=".BestPracticeActivity"
+            android:name=".BestPractice.BestPracticeActivity"
             android:label="@string/title_activity_best_practice"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
         <activity
-            android:name=".PoultryHealthManagementActivity"
+            android:name=".PoultryHealthManagement.PoultryHealthManagementActivity"
             android:label="Poultry health management"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
         <activity
-            android:name=".PoultryManagementActivity"
+            android:name=".PoultryManagement.PoultryManagementActivity"
             android:label="Poultry management"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
         <activity
-            android:name=".MainActivity"
+            android:name=".MainActivity.MainActivity"
             android:label="kuku"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar">
             <intent-filter>
@@ -39,15 +40,16 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".BreedsActivity"
+            android:name=".Breeds.BreedsActivity"
             android:label="Breeds"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
+            android:parentActivityName=".MainActivity.MainActivity"
+            />
         <activity
-            android:name=".HousingAndEquipmentActivity"
+            android:name=".HousingAndEquipment.HousingAndEquipmentActivity"
             android:label="Housing and equipment"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
         <activity
-            android:name=".BroodingActivity"
+            android:name=".Brooding.BroodingActivity"
             android:label="Brooding"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
     </application>

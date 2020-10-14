@@ -1,4 +1,16 @@
-package com.example.kuku;
+package com.example.kuku.BadHabits;
+
+import android.content.Intent;
+import android.os.Bundle;
+
+import com.example.kuku.BestPractice.BestPracticeActivity;
+import com.example.kuku.Breeds.BreedsActivity;
+import com.example.kuku.Brooding.BroodingActivity;
+import com.example.kuku.HousingAndEquipment.HousingAndEquipmentActivity;
+import com.example.kuku.PoultryHealthManagement.PoultryHealthManagementActivity;
+import com.example.kuku.PoultryManagement.PoultryManagementActivity;
+import com.example.kuku.R;
+import com.google.android.material.navigation.NavigationView;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
@@ -8,16 +20,12 @@ import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.navigation.ui.AppBarConfiguration;
 
-import android.content.Intent;
-import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Toast;
 
-import com.google.android.material.navigation.NavigationView;
-
-public class PoultryManagementActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener{
+public class BadHabitsActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
     private AppBarConfiguration mAppBarConfiguration;
     private DrawerLayout mDrawer;
@@ -26,26 +34,26 @@ public class PoultryManagementActivity extends AppCompatActivity implements Navi
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_poultry_management);
-
+        setContentView(R.layout.activity_bad_habits);
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        Log.d(TAG,"poultry management toolbar inflated");
+        Log.d(TAG,"poultry bad habits toolbar inflated");
 
         NavigationView navigationView = findViewById(R.id.nav_view);
         mDrawer = findViewById(R.id.drawer_layout);
-        Log.d(TAG,"nav view inflated from poultry management");
+        Log.d(TAG,"nav view inflated on poultry bad habits");
 
 
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this, mDrawer,toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         mDrawer.bringToFront();
+
         toggle.syncState();
 
         navigationView.setNavigationItemSelectedListener(this);
         mAppBarConfiguration = new AppBarConfiguration.Builder().setOpenableLayout(mDrawer).build();
-    }
 
+    }
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.main, menu);
@@ -62,7 +70,7 @@ public class PoultryManagementActivity extends AppCompatActivity implements Navi
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
 
-        Log.d(TAG,"Poultry management Navigation drawer opened");
+        Log.d(TAG,"Bad habits Navigation drawer opened");
 
         if (item.getItemId() == R.id.nav_breeds) {
             Toast.makeText(this,"BREEDS",Toast.LENGTH_SHORT).show();

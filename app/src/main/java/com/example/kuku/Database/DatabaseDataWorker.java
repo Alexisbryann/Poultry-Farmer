@@ -1,4 +1,4 @@
-package com.example.kuku;
+package com.example.kuku.Database;
 
 import android.content.ContentValues;
 import android.database.sqlite.SQLiteDatabase;

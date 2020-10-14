@@ -1,4 +1,4 @@
-package com.example.kuku;
+package com.example.kuku.MainActivity;
 
 import android.content.Context;
 import android.content.Intent;
@@ -10,6 +10,16 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.example.kuku.BadHabits.BadHabitsActivity;
+import com.example.kuku.BestPractice.BestPracticeActivity;
+import com.example.kuku.Breeds.BreedsActivity;
+import com.example.kuku.Brooding.BroodingActivity;
+import com.example.kuku.Database.DataBaseContract;
+import com.example.kuku.HousingAndEquipment.HousingAndEquipmentActivity;
+import com.example.kuku.PoultryHealthManagement.PoultryHealthManagementActivity;
+import com.example.kuku.PoultryManagement.PoultryManagementActivity;
+import com.example.kuku.R;
 
 public class MainActivityRecyclerAdapter extends RecyclerView.Adapter<MainActivityRecyclerAdapter.ViewHolder> {
 

@@ -1,4 +1,4 @@
-package com.example.kuku;
+package com.example.kuku.MainActivity;
 
 import android.annotation.SuppressLint;
 import android.app.LoaderManager;
@@ -22,9 +22,19 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.kuku.BadHabits.BadHabitsActivity;
+import com.example.kuku.BestPractice.BestPracticeActivity;
+import com.example.kuku.Breeds.BreedsActivity;
+import com.example.kuku.Brooding.BroodingActivity;
+import com.example.kuku.Database.DataBaseOpenHelper;
+import com.example.kuku.Database.DataManager;
+import com.example.kuku.HousingAndEquipment.HousingAndEquipmentActivity;
+import com.example.kuku.PoultryHealthManagement.PoultryHealthManagementActivity;
+import com.example.kuku.PoultryManagement.PoultryManagementActivity;
+import com.example.kuku.R;
 import com.google.android.material.navigation.NavigationView;
 
-import static com.example.kuku.DataBaseContract.*;
+import static com.example.kuku.Database.DataBaseContract.*;
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener
         ,LoaderManager.LoaderCallbacks<Cursor> {

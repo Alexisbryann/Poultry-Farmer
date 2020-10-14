@@ -1,4 +1,4 @@
-package com.example.kuku;
+package com.example.kuku.Breeds;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -12,7 +12,11 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 
-import static com.example.kuku.DataBaseContract.*;
+import com.example.kuku.Database.DataBaseOpenHelper;
+import com.example.kuku.Database.DataManager;
+import com.example.kuku.R;
+
+import static com.example.kuku.Database.DataBaseContract.*;
 
 public class BreedsExamplesActivity extends AppCompatActivity implements LoaderManager.LoaderCallbacks<Cursor> {
 

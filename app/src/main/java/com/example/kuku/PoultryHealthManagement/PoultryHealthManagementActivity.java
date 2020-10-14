@@ -1,8 +1,15 @@
-package com.example.kuku;
+package com.example.kuku.PoultryHealthManagement;
 
 import android.content.Intent;
 import android.os.Bundle;
 
+import com.example.kuku.BadHabits.BadHabitsActivity;
+import com.example.kuku.BestPractice.BestPracticeActivity;
+import com.example.kuku.Breeds.BreedsActivity;
+import com.example.kuku.Brooding.BroodingActivity;
+import com.example.kuku.HousingAndEquipment.HousingAndEquipmentActivity;
+import com.example.kuku.PoultryManagement.PoultryManagementActivity;
+import com.example.kuku.R;
 import com.google.android.material.navigation.NavigationView;
 
 import androidx.annotation.NonNull;

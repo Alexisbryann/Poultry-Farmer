@@ -1,8 +1,15 @@
-package com.example.kuku;
+package com.example.kuku.BestPractice;
 
 import android.content.Intent;
 import android.os.Bundle;
 
+import com.example.kuku.BadHabits.BadHabitsActivity;
+import com.example.kuku.Breeds.BreedsActivity;
+import com.example.kuku.Brooding.BroodingActivity;
+import com.example.kuku.HousingAndEquipment.HousingAndEquipmentActivity;
+import com.example.kuku.PoultryHealthManagement.PoultryHealthManagementActivity;
+import com.example.kuku.PoultryManagement.PoultryManagementActivity;
+import com.example.kuku.R;
 import com.google.android.material.navigation.NavigationView;
 
 import androidx.annotation.NonNull;
@@ -18,23 +25,25 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Toast;
 
-public class HousingAndEquipmentActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
+public class BestPracticeActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
     private AppBarConfiguration mAppBarConfiguration;
     private DrawerLayout mDrawer;
     private final String TAG = getClass().getSimpleName();
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_housing_and_equipment);
+        setContentView(R.layout.activity_best_practice);
 
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+        Log.d(TAG,"best practice toolbar inflated");
 
         NavigationView navigationView = findViewById(R.id.nav_view);
         mDrawer = findViewById(R.id.drawer_layout);
+        Log.d(TAG,"nav view inflated on best practise");
+
 
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this, mDrawer,toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
@@ -44,26 +53,25 @@ public class HousingAndEquipmentActivity extends AppCompatActivity implements Na
 
         navigationView.setNavigationItemSelectedListener(this);
         mAppBarConfiguration = new AppBarConfiguration.Builder().setOpenableLayout(mDrawer).build();
-    }
 
+    }
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.main, menu);
+        return true;
+    }
     @Override
     public void onBackPressed() {
         if (mDrawer.isDrawerOpen(GravityCompat.START)) {
-            overridePendingTransition(android.R.anim.fade_in,android.R.anim.fade_out);
             mDrawer.closeDrawer(GravityCompat.START);
         } else {
             super.onBackPressed();
         }
     }
     @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.main, menu);
-        return super.onCreateOptionsMenu(menu);
-    }
-
-    @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-        Log.d(TAG," Housing and equipment Navigation drawer opened");
+
+        Log.d(TAG,"Best practice Navigation drawer opened");
 
         if (item.getItemId() == R.id.nav_breeds) {
             Toast.makeText(this,"BREEDS",Toast.LENGTH_SHORT).show();
@@ -124,6 +132,4 @@ public class HousingAndEquipmentActivity extends AppCompatActivity implements Na
         }
         return false;
     }
-
-
 }

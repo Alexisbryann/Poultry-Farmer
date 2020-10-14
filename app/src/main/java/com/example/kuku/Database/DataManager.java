@@ -1,12 +1,14 @@
-package com.example.kuku;
+package com.example.kuku.Database;
 
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
+import com.example.kuku.Breeds.BreedsInfo;
+
 import java.util.ArrayList;
 import java.util.List;
 
-import static com.example.kuku.DataBaseContract.*;
+import static com.example.kuku.Database.DataBaseContract.*;
 
 public class DataManager {
     private static DataManager ourInstance = null;

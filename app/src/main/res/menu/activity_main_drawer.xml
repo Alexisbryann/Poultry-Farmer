@@ -11,7 +11,6 @@
             android:title="@string/breeds" />
         <item
             android:id="@+id/nav_housing_and_equipment"
-            android:icon="@drawable/housing_and_equipment"
             android:title="@string/housing_and_equipment" />
         <item
             android:id="@+id/nav_brooding"

@@ -1,4 +1,4 @@
-package com.example.kuku;
+package com.example.kuku.Breeds;
 
 import android.content.Context;
 import android.content.Intent;
@@ -10,6 +10,9 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.example.kuku.Database.DataBaseContract;
+import com.example.kuku.R;
 
 public class BreedsActivityRecyclerAdapter extends RecyclerView.Adapter<BreedsActivityRecyclerAdapter.ViewHolder> {
 

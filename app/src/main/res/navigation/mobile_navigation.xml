@@ -7,12 +7,12 @@
 
     <activity
         android:id="@+id/breedsActivity"
-        android:name="com.example.kuku.BreedsActivity"
+        android:name="com.example.kuku.Breeds.BreedsActivity"
         android:label="activity_breeds"
         tools:layout="@layout/activity_breeds" />
     <activity
         android:id="@+id/brooding"
-        android:name="com.example.kuku.BroodingActivity"
+        android:name="com.example.kuku.Brooding.BroodingActivity"
         android:label="activity_brooding"
         tools:layout="@layout/activity_brooding" />
 </navigation>

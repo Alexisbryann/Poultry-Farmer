@@ -1,4 +1,4 @@
-package com.example.kuku;
+package com.example.kuku.MainActivity;
 
 import android.os.Parcel;
 import android.os.Parcelable;
