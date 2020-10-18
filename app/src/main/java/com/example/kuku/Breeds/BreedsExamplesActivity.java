@@ -49,12 +49,10 @@ public class BreedsExamplesActivity extends AppCompatActivity implements LoaderM
     }
 
     private void initializeDisplayContent() {
-
         DataManager.loadFromDatabase(mDbOpenHelper);
 
         mRecyclerBreedsExample = findViewById(R.id.item_breeds_example);
         mBreedsExampleLayoutManager = new LinearLayoutManager(this);
-
         mBreedsExamplesRecyclerAdapter = new BreedsExamplesRecyclerAdapter(this,null);
 
         displayBreedsExamples();
@@ -104,4 +102,5 @@ public class BreedsExamplesActivity extends AppCompatActivity implements LoaderM
         }
 
     }
+
 }

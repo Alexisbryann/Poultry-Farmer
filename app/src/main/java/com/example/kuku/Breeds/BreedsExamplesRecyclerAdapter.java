@@ -77,7 +77,7 @@ public class BreedsExamplesRecyclerAdapter extends RecyclerView.Adapter<BreedsEx
         return mCursor == null ? 0 : mCursor.getCount();
     }
 
-    public static class ViewHolder extends RecyclerView.ViewHolder {
+    public static class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
 
         private final TextView mTextCharacteristics;
@@ -92,5 +92,16 @@ public class BreedsExamplesRecyclerAdapter extends RecyclerView.Adapter<BreedsEx
             mTextExample = itemView.findViewById(R.id.text_view_breeds_example_examples);
             mTextCharacteristics = itemView.findViewById(R.id.text_view_breeds_example_characteristics);
         }
+
+        @Override
+        public void onClick(View v) {
+            int pos = getLayoutPosition();
+
+            switch (pos){
+                case 0:
+
+            }
+        }
     }
+
 }

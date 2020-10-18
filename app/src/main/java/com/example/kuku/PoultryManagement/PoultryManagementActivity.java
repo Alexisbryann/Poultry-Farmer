@@ -43,7 +43,6 @@ public class PoultryManagementActivity extends AppCompatActivity implements Navi
         mDrawer = findViewById(R.id.drawer_layout);
         Log.d(TAG,"nav view inflated from poultry management");
 
-
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this, mDrawer,toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         mDrawer.bringToFront();

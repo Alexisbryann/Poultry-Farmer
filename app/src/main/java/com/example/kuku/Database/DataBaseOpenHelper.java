@@ -29,6 +29,7 @@ public class DataBaseOpenHelper extends SQLiteOpenHelper {
         worker.insertBreeds();
         worker.insertMains();
         worker.insertBroilers();
+        worker.insertDualPurposes();
 //        worker.insertHousingAndEquipment();
     }
 

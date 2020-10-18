@@ -150,8 +150,10 @@ public class DatabaseDataWorker {
                         "fed on feed rations that support their genetic requirements, by this time, they will have consumed about five and a half kilograms of feed.\n"+
                         "3.They attain live weight of about two to two and a half kg within seven to eight weeks of age.\n "+
                         "4.Their production cycle is relatively short, ranging between six to eight weeks.\n",
+
                 "EXAMPLES. \n" +
                         "Plymouth Rock, Cornish, Sussex, Brahma and hybrids.",
+
                 "CHARACTERISTICS. \n" +
                         "1.Comparatively, weigh much heavier than other poultry breeds.\n" +
                         "2.Do not go broody.\n" +
@@ -169,6 +171,41 @@ public class DatabaseDataWorker {
 
         long newRowId = mDb.insert(DataBaseContract.BroilersEntry.TABLE_NAME,null,values);
     }
+    public void insertDualPurposes(){
+        insertDualPurpose("PURPOSE\n"+
+                        "These birds can be raised for either eggs or meat or for both.",
+
+                "EXAMPLES\n"+
+                        "Orpington.",
+
+                "CHARACTERISTICS \n"+
+                "1. Black, white, blue or brownish in colour.\n" +
+                        "2. Begin laying at 5 (five) to 6 (six) months of age.\n" +
+                        "3. Heavy bird attaining three and a half to four kg in weight.");
+
+        insertDualPurpose("PURPOSE\n"+
+                        "These birds can be raised for either eggs or meat or for both.",
+
+                "EXAMPLES\n"+
+                        "Rhode Island Red.",
+
+                "CHARACTERISTICS\n"+
+                        "1. Brownish-red in colour.\n" +
+                        "2. Attains 3.5 (three and a half) to 4.0 (four) kg.\n" +
+                        "3. Brown shelled eggs.\n" +
+                        "4. Low tendencies for broodiness.");
+    }
+
+    private void insertDualPurpose(String purpose, String example, String characteristics) {
+        ContentValues values = new ContentValues();
+
+        values.put(DataBaseContract.DualPurposeEntry.COLUMN_PURPOSE,purpose);
+        values.put(DataBaseContract.DualPurposeEntry.COLUMN_EXAMPLE,example);
+        values.put(DataBaseContract.DualPurposeEntry.COLUMN_CHARACTERISTICS,characteristics);
+
+        long newRowId = mDb.insert(DataBaseContract.DualPurposeEntry.TABLE_NAME,null,values);
+    }
+
     private void insertBreed(String breed, String purpose, String example, String characteristics) {
 
         ContentValues values = new ContentValues();
@@ -182,7 +219,7 @@ public class DatabaseDataWorker {
     }
 
     public void insertMains(){
-        insertMain( "Breeds", "Discusses various chicken breeds and their characteristics.");
+        insertMain( "Breeds", "An overview of various chicken breeds and their characteristics.");
         insertMain("Housing and equipment","Recommendations on requirements and consideration while building a chicken coop.");
         insertMain("Brooding","Describes how to provide heat for newly hatched chicks.");
         insertMain("Poultry management","Entails various systems you can use to rear your chicken.");
