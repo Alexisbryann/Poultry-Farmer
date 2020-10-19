@@ -12,6 +12,7 @@ public class DataBaseContract implements BaseColumns {
 
         public static final String TABLE_NAME = "breeds";
         public static final String COLUMN_DESCRIPTION = "description";
+        public static final String COLUMN_IMAGE = "image";
         public static final String COLUMN_BREED = "breed";
         public static final String COLUMN_PURPOSE = "purpose";
         public static final String COLUMN_EXAMPLES = "examples";
@@ -31,6 +32,7 @@ public class DataBaseContract implements BaseColumns {
                 "CREATE TABLE " + TABLE_NAME + "(" +
                         _ID + " INTEGER PRIMARY KEY," +
                         COLUMN_DESCRIPTION + " TEXT," +
+                        COLUMN_IMAGE + "BLOB,"+
                         COLUMN_BREED + " TEXT," +
                         COLUMN_PURPOSE + " TEXT," +
                         COLUMN_EXAMPLES + " TEXT," +

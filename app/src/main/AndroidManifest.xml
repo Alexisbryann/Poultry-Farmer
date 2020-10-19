@@ -11,7 +11,7 @@
         android:theme="@style/Theme.AppCompat.Light.NoActionBar">
         <activity
             android:name=".Breeds.BreedsExamplesActivity"
-            android:label="BROILERS"
+            android:label="CHICKEN BREEDS"
             android:parentActivityName=".Breeds.BreedsActivity"
             android:theme="@style/Theme.AppCompat.Light.DarkActionBar" />
         <activity
