@@ -16,6 +16,7 @@ import com.example.kuku.Database.DataBaseOpenHelper;
 import com.example.kuku.Database.DataManager;
 import com.example.kuku.R;
 
+import static com.example.kuku.Breeds.BreedsActivity.LOADER_BREEDS;
 import static com.example.kuku.Database.DataBaseContract.*;
 
 public class BreedsExamplesActivity extends AppCompatActivity implements LoaderManager.LoaderCallbacks<Cursor> {
@@ -47,7 +48,6 @@ public class BreedsExamplesActivity extends AppCompatActivity implements LoaderM
         mBreedsExamplesRecyclerAdapter.notifyDataSetChanged();
         getLoaderManager().restartLoader(LOADER_BREEDS_EXAMPLE, null,this);
     }
-
     private void initializeDisplayContent() {
         DataManager.loadFromDatabase(mDbOpenHelper);
 
@@ -61,9 +61,9 @@ public class BreedsExamplesActivity extends AppCompatActivity implements LoaderM
     private void displayBreedsExamples() {
             mRecyclerBreedsExample.setLayoutManager(mBreedsExampleLayoutManager);
             mRecyclerBreedsExample.setAdapter(mBreedsExamplesRecyclerAdapter);
-
     }
-    @SuppressLint("StaticFieldLeak")
+
+        @SuppressLint("StaticFieldLeak")
     @Override
     public Loader<Cursor> onCreateLoader(int id,  Bundle bundle) {
             CursorLoader loader = null;
@@ -73,21 +73,21 @@ public class BreedsExamplesActivity extends AppCompatActivity implements LoaderM
                     public Cursor loadInBackground() {
                         SQLiteDatabase db = mDbOpenHelper.getReadableDatabase();
                         final String[] Columns = {
-                                BroilersEntry.getQName(BroilersEntry._ID),
-                                BroilersEntry.COLUMN_PURPOSE,
-                                BroilersEntry.COLUMN_EXAMPLE,
-                                BroilersEntry.COLUMN_CHARACTERISTICS};
+                                BreedsEntry.getQName(BreedsEntry._ID),
+                                BreedsEntry.COLUMN_BREED,
+                                BreedsEntry.COLUMN_EXAMPLES,
+                                BreedsEntry.COLUMN_PURPOSE,
+                                BreedsEntry.COLUMN_CHARACTERISTICS};
 
-                        final String exampleOrderBy = BroilersEntry.COLUMN_PURPOSE;
+                        final String OrderBy = BreedsEntry.COLUMN_BREED;
 
-                        return db.query(BroilersEntry.TABLE_NAME, Columns, null, null, null, null, exampleOrderBy);
+                        return db.query(BreedsEntry.TABLE_NAME, Columns, null, null, null, null, OrderBy);
                     }
                 };
         }
 
         return loader;
     }
-
     @Override
     public void onLoadFinished(Loader<Cursor> loader, Cursor data) {
         if (loader.getId() == LOADER_BREEDS_EXAMPLE) {

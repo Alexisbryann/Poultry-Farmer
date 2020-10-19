@@ -10,10 +10,6 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.Light.NoActionBar">
         <activity
-            android:name=".Breeds.Example"
-            android:label="@string/title_activity_example"
-            android:theme="@style/NoActionBar"></activity>
-        <activity
             android:name=".Breeds.BreedsExamplesActivity"
             android:label="BROILERS"
             android:parentActivityName=".Breeds.BreedsActivity"

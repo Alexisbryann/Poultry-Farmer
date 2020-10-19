@@ -14,6 +14,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.kuku.BadHabits.BadHabitsActivity;
 import com.example.kuku.BestPractice.BestPracticeActivity;
 import com.example.kuku.Breeds.BreedsActivity;
+import com.example.kuku.Breeds.BreedsExamplesActivity;
 import com.example.kuku.Brooding.BroodingActivity;
 import com.example.kuku.Database.DataBaseContract;
 import com.example.kuku.HousingAndEquipment.HousingAndEquipmentActivity;
@@ -107,7 +108,7 @@ public class MainActivityRecyclerAdapter extends RecyclerView.Adapter<MainActivi
                     mContext.startActivity(new Intent(mContext, BestPracticeActivity.class));
                     break;
                 case 2:
-                    mContext.startActivity(new Intent(mContext, BreedsActivity.class));
+                    mContext.startActivity(new Intent(mContext, BreedsExamplesActivity.class));
                     break;
                 case 3:
                     mContext.startActivity(new Intent(mContext, BroodingActivity.class));

@@ -28,8 +28,8 @@ public class DataBaseOpenHelper extends SQLiteOpenHelper {
         DatabaseDataWorker worker = new DatabaseDataWorker(sqLiteDatabase);
         worker.insertBreeds();
         worker.insertMains();
-        worker.insertBroilers();
-        worker.insertDualPurposes();
+//        worker.insertBroilers();
+//        worker.insertDualPurposes();
 //        worker.insertHousingAndEquipment();
     }
 

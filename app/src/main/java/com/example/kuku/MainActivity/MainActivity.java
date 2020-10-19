@@ -25,6 +25,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.kuku.BadHabits.BadHabitsActivity;
 import com.example.kuku.BestPractice.BestPracticeActivity;
 import com.example.kuku.Breeds.BreedsActivity;
+import com.example.kuku.Breeds.BreedsExamplesActivity;
 import com.example.kuku.Brooding.BroodingActivity;
 import com.example.kuku.Database.DataBaseOpenHelper;
 import com.example.kuku.Database.DataManager;
@@ -163,7 +164,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
         if (item.getItemId() == R.id.nav_breeds) {
             Toast.makeText(this,"BREEDS",Toast.LENGTH_SHORT).show();
-            Intent breeds = new Intent(this, BreedsActivity.class);
+            Intent breeds = new Intent(this, BreedsExamplesActivity.class);
             startActivity(breeds);
             overridePendingTransition(android.R.anim.fade_in,android.R.anim.fade_out);
             mDrawer.closeDrawer(GravityCompat.START);

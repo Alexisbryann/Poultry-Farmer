@@ -126,6 +126,28 @@ public class BreedsActivity extends AppCompatActivity implements NavigationView.
         }
     }
     @SuppressLint("StaticFieldLeak")
+//    @Override
+//    public Loader<Cursor> onCreateLoader(int i, Bundle bundle) {
+//        CursorLoader loader = null;
+//        if(i == LOADER_BREEDS) {
+//            loader = new CursorLoader(this) {
+//                @Override
+//                public Cursor loadInBackground() {
+//                    SQLiteDatabase db = mDbOpenHelper.getReadableDatabase();
+//                    final String[] Columns = {
+//                            BreedsEntry.getQName(BreedsEntry._ID),
+//                            BreedsEntry.COLUMN_BREED,
+//                            BreedsEntry.COLUMN_PURPOSE};
+//
+//                    final String breedOrderBy = BreedsEntry.COLUMN_BREED;
+//
+//                    return db.query( BreedsEntry.TABLE_NAME,Columns,
+//                            null, null, null, null, breedOrderBy);
+//                }
+//            };
+//        }
+//        return loader;
+//    }
     @Override
     public Loader<Cursor> onCreateLoader(int i, Bundle bundle) {
         CursorLoader loader = null;

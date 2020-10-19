@@ -18,6 +18,7 @@ public class BreedsExamplesRecyclerAdapter extends RecyclerView.Adapter<BreedsEx
     private static Context mContext;
     private Cursor mCursor;
     private final LayoutInflater mLayoutInflater;
+    private int mBreedPos;
     private int mPurposePos;
     private int mExamplePos;
     private int mCharacteristics;
@@ -34,10 +35,11 @@ public class BreedsExamplesRecyclerAdapter extends RecyclerView.Adapter<BreedsEx
 
             if (mCursor == null)
                 return;
-        mPurposePos = mCursor.getColumnIndex(DataBaseContract.BroilersEntry.COLUMN_PURPOSE);
-        mExamplePos = mCursor.getColumnIndex(DataBaseContract.BroilersEntry.COLUMN_EXAMPLE);
-        mCharacteristics = mCursor.getColumnIndex(DataBaseContract.BroilersEntry.COLUMN_CHARACTERISTICS);
-        mIdPos = mCursor.getColumnIndex(DataBaseContract.BroilersEntry._ID);
+        mBreedPos = mCursor.getColumnIndex(DataBaseContract.BreedsEntry.COLUMN_BREED);
+        mExamplePos = mCursor.getColumnIndex(DataBaseContract.BreedsEntry.COLUMN_EXAMPLES);
+        mPurposePos = mCursor.getColumnIndex(DataBaseContract.BreedsEntry.COLUMN_PURPOSE);
+        mCharacteristics = mCursor.getColumnIndex(DataBaseContract.BreedsEntry.COLUMN_CHARACTERISTICS);
+        mIdPos = mCursor.getColumnIndex(DataBaseContract.BreedsEntry._ID);
     }
 
     public void changeCursor(Cursor cursor){
@@ -61,11 +63,13 @@ public class BreedsExamplesRecyclerAdapter extends RecyclerView.Adapter<BreedsEx
 
         mCursor.moveToPosition(position);
 
+        String BreedPos = mCursor.getString(this.mBreedPos);
         String PurposePos = mCursor.getString(this.mPurposePos);
         String ExamplePos = mCursor.getString(this.mExamplePos);
         String CharacteristicsPos = mCursor.getString(this.mCharacteristics);
         int id = mCursor.getInt(mIdPos);
 
+        holder.mBreed.setText(BreedPos);
         holder.mTextPurpose.setText(PurposePos);
         holder.mTextExample.setText(ExamplePos);
         holder.mTextCharacteristics.setText(CharacteristicsPos);
@@ -84,10 +88,12 @@ public class BreedsExamplesRecyclerAdapter extends RecyclerView.Adapter<BreedsEx
         private final TextView mTextExample;
         private final TextView mTextPurpose;
         public int mId;
+        private final TextView mBreed;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
 
+            mBreed = itemView.findViewById(R.id.text_view_breeds);
             mTextPurpose = itemView.findViewById(R.id.text_view_breeds_example_purpose);
             mTextExample = itemView.findViewById(R.id.text_view_breeds_example_examples);
             mTextCharacteristics = itemView.findViewById(R.id.text_view_breeds_example_characteristics);
