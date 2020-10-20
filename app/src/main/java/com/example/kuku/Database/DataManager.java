@@ -23,6 +23,7 @@ public class DataManager {
     public static void loadFromDatabase (DataBaseOpenHelper dataBaseOpenHelper){
         SQLiteDatabase database = dataBaseOpenHelper.getReadableDatabase();
         final  String[] breedsColumns = {
+                BreedsEntry.COLUMN_IMAGE,
                 BreedsEntry.COLUMN_BREED,
                 BreedsEntry.COLUMN_PURPOSE,
                 BreedsEntry.COLUMN_EXAMPLES,
@@ -33,6 +34,7 @@ public class DataManager {
 
     private static void loadBreedsFromDatabase(Cursor breedsCursor) {
 
+        int imagePos = breedsCursor.getColumnIndex(BreedsEntry.COLUMN_IMAGE);
         int breedPos = breedsCursor.getColumnIndex(BreedsEntry.COLUMN_BREED);
         int purposePos = breedsCursor.getColumnIndex(BreedsEntry.COLUMN_PURPOSE);
         int examplesPos = breedsCursor.getColumnIndex(BreedsEntry.COLUMN_EXAMPLES);
@@ -42,12 +44,13 @@ public class DataManager {
         dm.mBreeds.clear();
         while (breedsCursor.moveToNext()){
 
+            String image = breedsCursor.getString(imagePos);
             String breed = breedsCursor.getString(breedPos);
             String purpose = breedsCursor.getString(purposePos);
             String examples = breedsCursor.getString(examplesPos);
             String characteristics = breedsCursor.getString(characteristicsPos);
 
-            BreedsInfo breedsInfo = new BreedsInfo(breed,purpose,examples,characteristics);
+            BreedsInfo breedsInfo = new BreedsInfo(image,breed,purpose,examples,characteristics);
 
             dm.mBreeds.add(breedsInfo);
         }

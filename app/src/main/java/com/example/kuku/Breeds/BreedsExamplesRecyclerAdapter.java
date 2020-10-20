@@ -5,6 +5,7 @@ import android.database.Cursor;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -13,11 +14,14 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.kuku.Database.DataBaseContract;
 import com.example.kuku.R;
 
+import java.sql.Blob;
+
 public class BreedsExamplesRecyclerAdapter extends RecyclerView.Adapter<BreedsExamplesRecyclerAdapter.ViewHolder> {
 
     private static Context mContext;
     private Cursor mCursor;
     private final LayoutInflater mLayoutInflater;
+    private int mImagePos;
     private int mBreedPos;
     private int mPurposePos;
     private int mExamplePos;
@@ -35,11 +39,12 @@ public class BreedsExamplesRecyclerAdapter extends RecyclerView.Adapter<BreedsEx
 
             if (mCursor == null)
                 return;
-        mBreedPos = mCursor.getColumnIndex(DataBaseContract.BreedsEntry.COLUMN_BREED);
-        mExamplePos = mCursor.getColumnIndex(DataBaseContract.BreedsEntry.COLUMN_EXAMPLES);
-        mPurposePos = mCursor.getColumnIndex(DataBaseContract.BreedsEntry.COLUMN_PURPOSE);
-        mCharacteristics = mCursor.getColumnIndex(DataBaseContract.BreedsEntry.COLUMN_CHARACTERISTICS);
-        mIdPos = mCursor.getColumnIndex(DataBaseContract.BreedsEntry._ID);
+            mImagePos = mCursor.getColumnIndex(DataBaseContract.BreedsEntry.COLUMN_IMAGE);
+            mBreedPos = mCursor.getColumnIndex(DataBaseContract.BreedsEntry.COLUMN_BREED);
+            mExamplePos = mCursor.getColumnIndex(DataBaseContract.BreedsEntry.COLUMN_EXAMPLES);
+            mPurposePos = mCursor.getColumnIndex(DataBaseContract.BreedsEntry.COLUMN_PURPOSE);
+            mCharacteristics = mCursor.getColumnIndex(DataBaseContract.BreedsEntry.COLUMN_CHARACTERISTICS);
+            mIdPos = mCursor.getColumnIndex(DataBaseContract.BreedsEntry._ID);
     }
 
     public void changeCursor(Cursor cursor){
@@ -63,6 +68,7 @@ public class BreedsExamplesRecyclerAdapter extends RecyclerView.Adapter<BreedsEx
 
         mCursor.moveToPosition(position);
 
+        String ImagePos = mCursor.getString(this.mImagePos);
         String BreedPos = mCursor.getString(this.mBreedPos);
         String PurposePos = mCursor.getString(this.mPurposePos);
         String ExamplePos = mCursor.getString(this.mExamplePos);
@@ -70,6 +76,7 @@ public class BreedsExamplesRecyclerAdapter extends RecyclerView.Adapter<BreedsEx
         int id = mCursor.getInt(mIdPos);
 
         holder.mBreed.setText(BreedPos);
+        holder.mImage.setImageResource(Integer.parseInt(ImagePos));
         holder.mTextPurpose.setText(PurposePos);
         holder.mTextExample.setText(ExamplePos);
         holder.mTextCharacteristics.setText(CharacteristicsPos);
@@ -81,7 +88,7 @@ public class BreedsExamplesRecyclerAdapter extends RecyclerView.Adapter<BreedsEx
         return mCursor == null ? 0 : mCursor.getCount();
     }
 
-    public static class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
+    public static class ViewHolder extends RecyclerView.ViewHolder {
 
 
         private final TextView mTextCharacteristics;
@@ -89,24 +96,16 @@ public class BreedsExamplesRecyclerAdapter extends RecyclerView.Adapter<BreedsEx
         private final TextView mTextPurpose;
         public int mId;
         private final TextView mBreed;
+        private final ImageView mImage;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
 
+            mImage = itemView.findViewById(R.id.image_view);
             mBreed = itemView.findViewById(R.id.text_view_breeds);
             mTextPurpose = itemView.findViewById(R.id.text_view_breeds_example_purpose);
             mTextExample = itemView.findViewById(R.id.text_view_breeds_example_examples);
             mTextCharacteristics = itemView.findViewById(R.id.text_view_breeds_example_characteristics);
-        }
-
-        @Override
-        public void onClick(View v) {
-            int pos = getLayoutPosition();
-
-            switch (pos){
-                case 0:
-
-            }
         }
     }
 

@@ -32,7 +32,7 @@ public class DataBaseContract implements BaseColumns {
                 "CREATE TABLE " + TABLE_NAME + "(" +
                         _ID + " INTEGER PRIMARY KEY," +
                         COLUMN_DESCRIPTION + " TEXT," +
-                        COLUMN_IMAGE + "BLOB,"+
+                        COLUMN_IMAGE + " INT,"+
                         COLUMN_BREED + " TEXT," +
                         COLUMN_PURPOSE + " TEXT," +
                         COLUMN_EXAMPLES + " TEXT," +

@@ -9,7 +9,7 @@
         android:enabled="true">
         <item
             android:id="@+id/nav_breeds"
-            android:icon="@drawable/chicken_breeds"
+            android:icon="@drawable/improved_indigenous_chicken"
             android:title="@string/breeds" />
         <item
             android:id="@+id/nav_housing_and_equipment"

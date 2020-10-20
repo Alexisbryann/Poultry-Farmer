@@ -45,6 +45,7 @@
                         style="@style/Base.Widget.MaterialComponents.TextView"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
                         android:gravity="center"
                         android:text="@string/breed1"
                         android:textAllCaps="true"
@@ -56,9 +57,10 @@
                         app:layout_constraintTop_toTopOf="parent" />
 
                     <ImageView
-                        android:id="@+id/imageView"
+                        android:id="@+id/image_view"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
                         android:contentDescription="@string/breed"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintStart_toEndOf="@+id/text_view_breeds"
