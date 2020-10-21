@@ -1,56 +1,57 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.kuku">
+    package="com.alexis.kuku">
 
     <application
         android:allowBackup="true"
-        android:icon="@mipmap/ic_header_round"
+        android:icon="@mipmap/launcher"
         android:label="@string/app_name"
-        android:roundIcon="@mipmap/ic_header_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.Light.NoActionBar">
         <activity
-            android:name=".Breeds.BreedsExamplesActivity"
+            android:name="com.alexis.kuku.Breeds.BreedsExamplesActivity"
             android:label="CHICKEN BREEDS"
-            android:parentActivityName=".Breeds.BreedsActivity"
+            android:parentActivityName="com.alexis.kuku.MainActivity.MainActivity"
             android:theme="@style/Theme.AppCompat.Light.DarkActionBar" />
         <activity
-            android:name=".BadHabits.BadHabitsActivity"
+            android:name="com.alexis.kuku.BadHabits.BadHabitsActivity"
             android:label="@string/title_activity_bad_habits"
+            android:parentActivityName="com.alexis.kuku.MainActivity.MainActivity"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
         <activity
-            android:name=".BestPractice.BestPracticeActivity"
+            android:name="com.alexis.kuku.BestPractice.BestPracticeActivity"
             android:label="@string/title_activity_best_practice"
+            android:parentActivityName="com.alexis.kuku.MainActivity.MainActivity"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
         <activity
-            android:name=".PoultryHealthManagement.PoultryHealthManagementActivity"
+            android:name="com.alexis.kuku.PoultryHealthManagement.PoultryHealthManagementActivity"
             android:label="Poultry health management"
+            android:parentActivityName="com.alexis.kuku.MainActivity.MainActivity"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
         <activity
-            android:name=".PoultryManagement.PoultryManagementActivity"
+            android:name="com.alexis.kuku.PoultryManagement.PoultryManagementActivity"
             android:label="Poultry management"
+            android:parentActivityName="com.alexis.kuku.MainActivity.MainActivity"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
         <activity
-            android:name=".MainActivity.MainActivity"
-            android:label="kuku"
+            android:name="com.alexis.kuku.MainActivity.MainActivity"
+            android:label="@string/app_name"
+            android:parentActivityName="com.alexis.kuku.MainActivity.MainActivity"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
         <activity
-            android:name=".Breeds.BreedsActivity"
-            android:label="Breeds"
-            android:parentActivityName=".MainActivity.MainActivity" />
-        <activity
-            android:name=".HousingAndEquipment.HousingAndEquipmentActivity"
+            android:name="com.alexis.kuku.HousingAndEquipment.HousingAndEquipmentActivity"
             android:label="Housing and equipment"
+            android:parentActivityName="com.alexis.kuku.MainActivity.MainActivity"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
         <activity
-            android:name=".Brooding.BroodingActivity"
+            android:name="com.alexis.kuku.Brooding.BroodingActivity"
             android:label="Brooding"
+            android:parentActivityName="com.alexis.kuku.MainActivity.MainActivity"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
     </application>
 

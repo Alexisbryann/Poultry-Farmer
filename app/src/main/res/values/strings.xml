@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Kuku</string>
+    <string name="app_name">Poultry farming</string>
     <string name="title_activity_main">MainActivity</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
@@ -7,7 +7,6 @@
     <string name="nav_header_subtitle">android.studio@android.com</string>
     <string name="nav_header_desc">Navigation header</string>
     <string name="action_settings">Settings</string>
-
     <string name="breeds">Breeds</string>
     <string name="brooding">Brooding</string>
     <string name="purpose">Purpose</string>
@@ -17,9 +16,9 @@
     <string name="common_diseases">Common diseases</string>
     <string name="bad_habits">Bad habits</string>
     <string name="best_practice">Best practice</string>
-    <string name="title_activity_common_diseases">Common diseases</string>
-    <string name="title_activity_best_practice">Best practice</string>
-    <string name="title_activity_bad_habits">Bad habits</string>
+    <string name="title_activity_common_diseases">COMMON DISEASES</string>
+    <string name="title_activity_best_practice">BEST PRACTICE</string>
+    <string name="title_activity_bad_habits">BAD HABITS</string>
     <string name="bryankoech7_gmail_com">bryankoech7@gmail.com</string>
     <string name="todo">TODO</string>
     <string name="about">This application has all the basic information you need to start a successful poultry farming business in Kenya.</string>
@@ -28,17 +27,19 @@
     <string name="text_view_description">TextView</string>
     <string name="purpose2">PURPOSE</string>
     <string name="example">EXAMPLE</string>
-    <string name="characteristics">CHARACTERISTICS</string>
-    <string name="breeds_example">BREEDS EXAMPLE</string>
-    <string name="breeds_purpose">BREEDS PURPOSE</string>
-    <string name="breeds_examples">BREEDS EXAMPLES</string>
-    <string name="breeds_characteristics">BREEDS CHARACTERISTICS</string>
-    <string name="title_main">TITLE MAIN</string>
-    <string name="main_description">MAIN DESCRIPTION</string>
+    <string name="characteristics">Characteristics</string>
+    <string name="breeds_example">Breeds example</string>
+    <string name="breeds_purpose">Breeds purpose</string>
+    <string name="breeds_examples">Breeds examples</string>
+    <string name="breeds_characteristics">Breeds characteristics</string>
+    <string name="title_main">Title main</string>
+    <string name="main_description">Main description</string>
     <string name="description">Description</string>
     <string name="title_activity_example">Example</string>
-    <string name="tab_text_1">Tab 1</string>
-    <string name="tab_text_2">Tab 2</string>
     <string name="breed1">BREED</string>
+    <string name="habit">Habit</string>
+    <string name="image_habit">Poultry vice image</string>
+    <string name="text_view_causes">Causes</string>
+    <string name="text_view_prevention">Prevention</string>
 
 </resources>
