@@ -75,6 +75,7 @@ public class BreedsExamplesActivity extends AppCompatActivity implements LoaderM
                         final String[] Columns = {
                                 BreedsEntry.getQName(BreedsEntry._ID),
                                 BreedsEntry.COLUMN_BREED,
+                                BreedsEntry.COLUMN_IMAGE,
                                 BreedsEntry.COLUMN_EXAMPLES,
                                 BreedsEntry.COLUMN_PURPOSE,
                                 BreedsEntry.COLUMN_CHARACTERISTICS};
