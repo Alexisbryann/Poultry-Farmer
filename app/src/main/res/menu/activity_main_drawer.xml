@@ -9,11 +9,10 @@
         android:enabled="true">
         <item
             android:id="@+id/nav_breeds"
-            android:icon="@drawable/improved_indigenous_chicken"
+            android:icon="@drawable/kenbro"
             android:title="@string/breeds" />
         <item
             android:id="@+id/nav_housing_and_equipment"
-            android:icon="@drawable/another_cross_section_poultry_house"
             android:title="@string/housing_and_equipment" />
         <item
             android:id="@+id/nav_brooding"
