@@ -41,5 +41,10 @@
     <string name="image_habit">Poultry vice image</string>
     <string name="text_view_causes">Causes</string>
     <string name="text_view_prevention">Prevention</string>
+    <string name="text_view_heading">Heading</string>
+    <string name="text_view_title">Title</string>
+    <string name="text_view_measures">Measures</string>
+    <string name="best_practice_">POULTRY BIO-SECURITY.</string>
+    <string name="best_practice_description">Achieving good bird, barn and gut health requires operational excellence and attention to detail. A combination of quality nutrition, veterinary guidance and increased consideration of barn and bird management will help to ensure birds have the best possible chance to perform at their maximum potential. Some critical focus areas are as follows:</string>
 
 </resources>

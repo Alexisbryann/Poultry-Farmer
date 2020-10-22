@@ -1,10 +1,16 @@
 package com.alexis.kuku.BestPractice;
 
+import android.app.LoaderManager;
 import android.content.Intent;
+import android.content.Loader;
+import android.database.Cursor;
 import android.os.Bundle;
 
 import com.alexis.kuku.BadHabits.BadHabitsActivity;
+import com.alexis.kuku.BadHabits.BadHabitsRecyclerAdapter;
 import com.alexis.kuku.Brooding.BroodingActivity;
+import com.alexis.kuku.Database.DataBaseOpenHelper;
+import com.alexis.kuku.Database.DataManager;
 import com.alexis.kuku.HousingAndEquipment.HousingAndEquipmentActivity;
 import com.alexis.kuku.PoultryHealthManagement.PoultryHealthManagementActivity;
 import com.alexis.kuku.PoultryManagement.PoultryManagementActivity;
@@ -18,109 +24,57 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.navigation.ui.AppBarConfiguration;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Toast;
 
-public class BestPracticeActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
+public class BestPracticeActivity extends AppCompatActivity implements LoaderManager.LoaderCallbacks<Cursor> {
 
-    private AppBarConfiguration mAppBarConfiguration;
-    private DrawerLayout mDrawer;
-    private final String TAG = getClass().getSimpleName();
+    public static final int LOADER_BEST_PRACTICE = 0;
+    private DataBaseOpenHelper mDbOpenHelper;
+    private RecyclerView mRecyclerBestPractice;
+    private LinearLayoutManager mBestPracticeLinearLayoutManager;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_best_practice);
+        setContentView(R.layout.content_best_practice);
 
-        Toolbar toolbar = findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
-        Log.d(TAG,"best practice toolbar inflated");
+        mDbOpenHelper = new DataBaseOpenHelper(this);
+        initializeDisplayContent();
+    }
 
-        NavigationView navigationView = findViewById(R.id.nav_view);
-        mDrawer = findViewById(R.id.drawer_layout);
-        Log.d(TAG,"nav view inflated on best practise");
+    private void initializeDisplayContent() {
+        DataManager.loadFromDatabase(mDbOpenHelper);
 
-
-        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
-                this, mDrawer,toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
-        mDrawer.bringToFront();
-
-        toggle.syncState();
-
-        navigationView.setNavigationItemSelectedListener(this);
-        mAppBarConfiguration = new AppBarConfiguration.Builder().setOpenableLayout(mDrawer).build();
+        mRecyclerBestPractice = findViewById(R.id.rv_best_practice);
+        mBestPracticeLinearLayoutManager = new LinearLayoutManager(this);
 
     }
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.main, menu);
         return true;
     }
+
     @Override
-    public void onBackPressed() {
-        if (mDrawer.isDrawerOpen(GravityCompat.START)) {
-            mDrawer.closeDrawer(GravityCompat.START);
-        } else {
-            super.onBackPressed();
-        }
+    public Loader<Cursor> onCreateLoader(int id, Bundle args) {
+        return null;
     }
+
     @Override
-    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+    public void onLoadFinished(Loader<Cursor> loader, Cursor data) {
 
-        Log.d(TAG,"Best practice Navigation drawer opened");
+    }
 
-       if (item.getItemId() == R.id.nav_brooding) {
-            Toast.makeText(this,"BROODING",Toast.LENGTH_SHORT).show();
-            Intent brooding = new Intent(this, BroodingActivity.class);
-            startActivity(brooding);
-            overridePendingTransition(android.R.anim.fade_in,android.R.anim.fade_out);
-            mDrawer.closeDrawer(GravityCompat.START);
-            finish();
-            return true;
-        }else if (item.getItemId()==R.id.nav_housing_and_equipment){
-            Toast.makeText(this,"HOUSING AND EQUIPMENT",Toast.LENGTH_SHORT).show();
-            Intent housing = new Intent(this, HousingAndEquipmentActivity.class);
-            startActivity(housing);
-            overridePendingTransition(android.R.anim.fade_in,android.R.anim.fade_out);
-            mDrawer.closeDrawer(GravityCompat.START);
-            finish();
-            return true;
-        }else if (item.getItemId()==R.id.nav_poultry_management){
-            Toast.makeText(this,"POULTRY MANAGEMENT",Toast.LENGTH_SHORT).show();
-            Intent management = new Intent(this, PoultryManagementActivity.class);
-            startActivity(management);
-            overridePendingTransition(android.R.anim.fade_in,android.R.anim.fade_out);
-            mDrawer.closeDrawer(GravityCompat.START);
-            finish();
-            return true;
-        }else if (item.getItemId()==R.id.nav_common_diseases){
-            Toast.makeText(this,"COMMON DISEASES", Toast.LENGTH_SHORT).show();
-            Intent commonDiseases = new Intent(this, PoultryHealthManagementActivity.class);
-            startActivity(commonDiseases);
-            overridePendingTransition(android.R.anim.fade_in,android.R.anim.fade_out);
-            mDrawer.closeDrawer(GravityCompat.START);
-            finish();
-            return true;
-        }else if (item.getItemId()==R.id.nav_best_practice){
-            Toast.makeText(this,"BEST PRACTICE", Toast.LENGTH_SHORT).show();
-            Intent bestPractice = new Intent(this, BestPracticeActivity.class);
-            startActivity(bestPractice);
-            overridePendingTransition(android.R.anim.fade_in,android.R.anim.fade_out);
-            mDrawer.closeDrawer(GravityCompat.START);
-            finish();
-            return true;
-        }else if (item.getItemId()==R.id.nav_bad_habits){
-            Toast.makeText(this,"BAD HABITS", Toast.LENGTH_SHORT).show();
-            Intent badHabits = new Intent(this, BadHabitsActivity.class);
-            startActivity(badHabits);
-            overridePendingTransition(android.R.anim.fade_in,android.R.anim.fade_out);
-            mDrawer.closeDrawer(GravityCompat.START);
-            finish();
-            return true;
-        }
-        return false;
+    @Override
+    public void onLoaderReset(Loader<Cursor> loader) {
+
     }
 }

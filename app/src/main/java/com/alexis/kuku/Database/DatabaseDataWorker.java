@@ -295,4 +295,65 @@ public class DatabaseDataWorker {
 
         long newRowId = mDb.insert(DataBaseContract.BadHabitsEntry.TABLE_NAME,null,values);
     }
+    public void insertBestPractices(){
+        insertBestPractice(
+                "Bio-security.",
+                "Well-defined bio-security practices throughout broiler production" +
+                        " (pre-, during and post-placement) are crucial to successful poultry production.\n"+
+                        "Effective bio-security can aid hygiene, vermin and insect control on-farm " +
+                        "and help to limit disease transmission within and between barns.");
+        insertBestPractice("Downtime between flocks.",
+                "Adequate downtime of at least 14 days with appropriate cleaning and " +
+                        "disinfection measures between flock placements helps to reduce transmission " +
+                        "of disease between flocks and allows time to prepare for the next flock.");
+        insertBestPractice("Pre-placement preparation.",
+                "Pre-placement preparation is needed before the new flock arrives to help " +
+                        "prevent losses during brooding and the rest of grow out.\n" +
+                        "Checkpoints to keep in mind: heaters, floor temperature, temperature and relative humidity probes," +
+                        "ventilation, drinkers, feeders, etc.");
+        insertBestPractice("Brooding management",
+                "With today’s improved genetic capabilities and the fast growth of birds," +
+                        " more time is being spent during the critical brooding phase. " +
+                        "As a result, ensuring a good start in poultry production can have a significant " +
+                        "impact on the future health and performance of the birds.\n" +
+                        "The brooding period is an important time for intestinal growth " +
+                        "and the development of a balanced micro-flora.");
+        insertBestPractice("Water management.",
+                "Drinking water accounts for 70–80 percent of the bird’s daily drinking needs." +
+                        " Poultry will generally consume more water than feed. " +
+                        "As a result, water is the most critical nutrient for poultry. " +
+                        "An abundance of clean water will reduce challenges and maximize performance.\n" +
+                "Factors to consider when thinking about water management include:\n" +
+                "Cleanliness of drinker lines/regulators prior to flock placement and during production.\n" +
+                "Flushing water lines between flocks and during production.\n" +
+                "Drinker equipment maintenance.");
+        insertBestPractice("Feed management.",
+                "Birds must have easy access to feed. Proper feeder line height corresponding " +
+                        "to the height of the birds helps to reduce feed wastage and mixing feed with litter," +
+                        " and it ensures that all birds have access to feed." +
+                        " Adequate feed access is also achieved by following the feed line manufacturer’s " +
+                        "recommendations for the number of birds per feed pan or line of trough feeder.\n" +
+                        "Birds will naturally peck at litter but avoiding “out-of-feed” events helps to " +
+                        "reduce the potential for birds to peck excessively at the litter. " +
+                        "Simple measures like activating trigger feed pans and monitoring " +
+                        "feed bin levels during barn checks can help to prevent such events.\n" +
+                        "Good feed quality that avoids contaminants like mycotoxins is important to ensure performance.");
+        insertBestPractice("Environmental management.",
+                "General environmental management of the barn includes many components, " +
+                        "such as temperature, relative humidity, ventilation and lighting.\n" +
+                        "Understanding that these components work both separately and together" +
+                        " can help to guide your management practices.");
+        insertBestPractice("Mortality checks.",
+                "Cull diseased birds as early as possible.");
+        insertBestPractice("Flock health management.",
+                "Work with your veterinarian to design a program customized for your flock’s health.");
+    }
+    private void insertBestPractice( String title, String measures){
+        ContentValues values = new ContentValues();
+        values.put(DataBaseContract.BestPracticeEntry.COLUMN_TITLE,title);
+        values.put(DataBaseContract.BestPracticeEntry.COLUMN_MEASURES,measures);
+
+        long newRowId = mDb.insert(DataBaseContract.BestPracticeEntry.TABLE_NAME,null,values);
+
+    }
 }

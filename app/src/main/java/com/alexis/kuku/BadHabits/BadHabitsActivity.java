@@ -31,8 +31,6 @@ import static com.alexis.kuku.Database.DataBaseContract.*;
 public class BadHabitsActivity extends AppCompatActivity implements LoaderManager.LoaderCallbacks<Cursor> {
 
     public static final int LOADER_BAD_HABITS = 0;
-    private AppBarConfiguration mAppBarConfiguration;
-    private DrawerLayout mDrawer;
     private DataBaseOpenHelper mDbOpenHelper;
     private RecyclerView mRecyclerBadHabits;
     private LinearLayoutManager mLayoutManagerBadHabits;

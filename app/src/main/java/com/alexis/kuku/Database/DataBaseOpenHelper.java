@@ -30,7 +30,7 @@ public class DataBaseOpenHelper extends SQLiteOpenHelper {
         worker.insertBadHabits();
         worker.insertBreeds();
         worker.insertMains();
-//        worker.insertHousingAndEquipment();
+        worker.insertBestPractices();
     }
 
     @Override
