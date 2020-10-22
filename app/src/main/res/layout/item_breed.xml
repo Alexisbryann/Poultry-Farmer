@@ -37,6 +37,7 @@
                     android:id="@+id/text_view_breed"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
+                    android:fontFamily="sans-serif-condensed"
                     android:text="@string/breed"
                     android:textAppearance="@style/TextAppearance.AppCompat.Large"
                     android:textSize="24sp"

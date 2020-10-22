@@ -22,7 +22,7 @@
             android:name="com.alexis.kuku.BestPractice.BestPracticeActivity"
             android:label="@string/title_activity_best_practice"
             android:parentActivityName="com.alexis.kuku.MainActivity.MainActivity"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
+            android:theme="@style/Theme.AppCompat.Light.DarkActionBar" />
         <activity
             android:name="com.alexis.kuku.PoultryHealthManagement.PoultryHealthManagementActivity"
             android:label="Poultry health management"
