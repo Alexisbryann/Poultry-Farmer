@@ -213,9 +213,11 @@ public class DatabaseDataWorker {
                 R.drawable.egg_eating,
 
                 "WHAT IS IT? \n" +
+
                         "Sometimes birds develop the tendency to eat their own eggs.\n",
 
                 " CAUSES. \n" +
+
                         "\u2714 It may start due to the presence of cracked eggs or accidental breaking of eggs and once" +
                         " the birds develop taste for it they start breaking their own eggs.\n" +
                         "\u2714 Factors responsible for breaking of egg or cracking of egg are thin or soft egg shell" +
@@ -224,9 +226,10 @@ public class DatabaseDataWorker {
                         "\u2714 Nutritional deficiency, especially absence of calcium and vitamin D.\n ",
 
                 " PREVENTION.\n" +
+
                         "\u2714 Isolate the birds which have developed this habit. \n" +
                             "\u2714 In consultation with the expert, the quantity of lime stone and protein should be increased in the diet. \n" +
-                            "\u2714 Egg eaters should be kept in a cage in which egg rolls away, beyond the reach of the bird after laying of the eggs due to slope.\n " +
+                            "\u2714 Egg eaters should be kept in a cage in which egg rolls away, beyond the reach of the bird after laying of the eggs due to slope.\n" +
                             "\u2714 De-beaking also reduces this tendency. \n" +
                             "\u2714 Darkness in the laying area may prevent his habit. \n" +
                             "\u2714 Frequent collection of eggs.\n");
@@ -236,6 +239,7 @@ public class DatabaseDataWorker {
                 R.drawable.cannibalism,
 
                 " WHAT IS IT? \n" +
+
                         "\u2714 Cannibalism is a condition in which birds of a flock attack their pen mate and eat its flesh," +
                         "which may impose deep wounds and heavy mortality.\n" +
                         "\u2714 Pecking is common in laying birds. Once the birds adopt this vice it spreads rapidly through the flock.\n" +
@@ -243,6 +247,7 @@ public class DatabaseDataWorker {
                         "\u2714 Presence of wounded or dead birds which are showing wound but otherwise appear healthy are indicative of cannibalism.\n",
 
                 " CAUSES. \n" +
+
                         "\u2714 Overcrowding.\n" +
                         "\u2714 Bleeding in the external genitalia due to laying of large eggs.\n" +
                         "\u2714 Protein deficiency in the diet or provision of feeds or feeding/drinking space.\n" +
@@ -251,6 +256,7 @@ public class DatabaseDataWorker {
                         "\u2714 Loss of feathers from the body or bleeding from the skin due to parasitic infestation.\n" +
                         "\u2714 Wounds inflicted by fighting between the birds.\n",
                 " PREVENTION.\n" +
+
                         "\u2714 De-beaking, which can be done right from the day old chicks to any age." +
                         " One- third of the upper beak and tip of the lower beak is to be trimmed.\n" +
                         "\u2714 To stop bleeding after de-beaking, hot iron rod is touched at the site of cut." +
@@ -264,12 +270,15 @@ public class DatabaseDataWorker {
                 R.drawable.egg_hiding,
 
                 " WHAT IS IT? \n"  +
+
                         "Poultry birds can hide the eggs in the field, bushes etc.\n",
 
                 " CAUSES. \n" +
+
                         "\u2714 This habit may develop in the domestic fowl which are allowed ample freedom of movement.\n",
 
                 " PREVENTION.\n" +
+
                         "\u2714 Restrict freedom of movement of the birds.\n" +
                         "\u2714 Laying area should be built inside poultry house and made comfortable by providing sawdust, dry grass etc.");
 
