@@ -68,7 +68,6 @@ public class BadHabitsActivity extends AppCompatActivity implements LoaderManage
 
         displayBadHabits();
     }
-
     private void displayBadHabits() {
     mRecyclerBadHabits.setLayoutManager(mLayoutManagerBadHabits);
     mRecyclerBadHabits.setAdapter(mBadHabitsRecyclerAdapter);

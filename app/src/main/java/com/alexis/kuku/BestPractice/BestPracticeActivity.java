@@ -1,14 +1,18 @@
 package com.alexis.kuku.BestPractice;
 
+import android.annotation.SuppressLint;
 import android.app.LoaderManager;
+import android.content.CursorLoader;
 import android.content.Intent;
 import android.content.Loader;
 import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 
 import com.alexis.kuku.BadHabits.BadHabitsActivity;
 import com.alexis.kuku.BadHabits.BadHabitsRecyclerAdapter;
 import com.alexis.kuku.Brooding.BroodingActivity;
+import com.alexis.kuku.Database.DataBaseContract;
 import com.alexis.kuku.Database.DataBaseOpenHelper;
 import com.alexis.kuku.Database.DataManager;
 import com.alexis.kuku.HousingAndEquipment.HousingAndEquipmentActivity;
@@ -38,6 +42,7 @@ public class BestPracticeActivity extends AppCompatActivity implements LoaderMan
     private DataBaseOpenHelper mDbOpenHelper;
     private RecyclerView mRecyclerBestPractice;
     private LinearLayoutManager mBestPracticeLinearLayoutManager;
+    private BestPracticeRecyclerAdapter mBestPracticeRecyclerAdapter;
 
 
     @Override
@@ -49,12 +54,56 @@ public class BestPracticeActivity extends AppCompatActivity implements LoaderMan
         initializeDisplayContent();
     }
 
+    @Override
+    protected void onDestroy() {
+        mDbOpenHelper.close();
+        super.onDestroy();
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        mBestPracticeRecyclerAdapter.notifyDataSetChanged();
+        getLoaderManager().restartLoader(LOADER_BEST_PRACTICE, null, this);
+    }
+
     private void initializeDisplayContent() {
         DataManager.loadFromDatabase(mDbOpenHelper);
 
         mRecyclerBestPractice = findViewById(R.id.rv_best_practice);
         mBestPracticeLinearLayoutManager = new LinearLayoutManager(this);
+        mBestPracticeRecyclerAdapter = new BestPracticeRecyclerAdapter(this,null);
 
+        displayBestPractice();
+
+    }
+
+    private void displayBestPractice() {
+        mRecyclerBestPractice.setLayoutManager(mBestPracticeLinearLayoutManager);
+        mRecyclerBestPractice.setAdapter(mBestPracticeRecyclerAdapter);
+    }
+
+    @SuppressLint("StaticFieldLeak")
+    @Override
+    public Loader<Cursor> onCreateLoader(int id, Bundle bundle) {
+        CursorLoader loader = null;
+        if (id == LOADER_BEST_PRACTICE) {
+            loader = new CursorLoader(this) {
+                @Override
+                public Cursor loadInBackground() {
+                    SQLiteDatabase db = mDbOpenHelper.getReadableDatabase();
+                    final String[] Columns = {
+                            DataBaseContract.BestPracticeEntry.getQName(DataBaseContract.BestPracticeEntry._ID),
+                            DataBaseContract.BestPracticeEntry.COLUMN_TITLE,
+                            DataBaseContract.BestPracticeEntry.COLUMN_MEASURES};
+
+                    final String OrderBy = DataBaseContract.BestPracticeEntry.COLUMN_TITLE;
+                    return db.query(DataBaseContract.BestPracticeEntry.TABLE_NAME, Columns, null, null, null, null, OrderBy);
+                }
+            };
+        }
+
+        return loader;
     }
 
     @Override
@@ -62,19 +111,19 @@ public class BestPracticeActivity extends AppCompatActivity implements LoaderMan
         getMenuInflater().inflate(R.menu.main, menu);
         return true;
     }
-
-    @Override
-    public Loader<Cursor> onCreateLoader(int id, Bundle args) {
-        return null;
-    }
-
     @Override
     public void onLoadFinished(Loader<Cursor> loader, Cursor data) {
 
+        if (loader.getId() == LOADER_BEST_PRACTICE) {
+            mBestPracticeRecyclerAdapter.changeCursor(data);
+        }
     }
 
     @Override
     public void onLoaderReset(Loader<Cursor> loader) {
 
+        if (loader.getId() == LOADER_BEST_PRACTICE) {
+            mBestPracticeRecyclerAdapter.changeCursor(null);
+        }
     }
 }
