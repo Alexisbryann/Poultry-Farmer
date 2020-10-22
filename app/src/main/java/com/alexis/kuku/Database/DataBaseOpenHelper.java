@@ -26,9 +26,10 @@ public class DataBaseOpenHelper extends SQLiteOpenHelper {
 
 
         DatabaseDataWorker worker = new DatabaseDataWorker(sqLiteDatabase);
+
+        worker.insertBadHabits();
         worker.insertBreeds();
         worker.insertMains();
-        worker.insertBadHabits();
 //        worker.insertHousingAndEquipment();
     }
 

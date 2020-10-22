@@ -24,7 +24,7 @@ public class DataBaseContract implements BaseColumns {
                 "CREATE INDEX " + INDEX1 + " ON " + TABLE_NAME +
                         "(" + COLUMN_BREED + ")";
 
-        public static final String getQName(String columnName) {
+        public static String getQName(String columnName) {
             return TABLE_NAME + "." + columnName;
         }
 
@@ -100,6 +100,7 @@ public class DataBaseContract implements BaseColumns {
 
     public static final class BadHabitsEntry implements BaseColumns {
         public static final String TABLE_NAME = "badHabits";
+        public static final String COLUMN_IMAGE = "image";
         public static final String COLUMN_DESCRIPTION = "description";
         public static final String COLUMN_HABIT = "habit";
         public static final String COLUMN_CAUSES = "causes";
@@ -111,17 +112,50 @@ public class DataBaseContract implements BaseColumns {
                 "CREATE INDEX " + INDEX1 + " ON " + TABLE_NAME +
                         "(" + COLUMN_HABIT + ")";
 
-        public static final String getQName(String columnName) {
+        public static String getQName(String columnName) {
             return TABLE_NAME + "." + columnName;
         }
         public static final String SQL_CREATE_TABLE =
                 "CREATE TABLE " + TABLE_NAME + "(" +
-                        _ID + "INTEGER PRIMARY KEY, " +
-                        COLUMN_DESCRIPTION + "TEXT," +
-                        COLUMN_HABIT + "TEXT," +
-                        COLUMN_CAUSES + "TEXT," +
-                        COLUMN_PREVENTION + "TEXT )";
+                        _ID + " INTEGER PRIMARY KEY, " +
+                        COLUMN_DESCRIPTION + " TEXT," +
+                        COLUMN_IMAGE + " INT,"+
+                        COLUMN_HABIT + " TEXT," +
+                        COLUMN_CAUSES + " TEXT," +
+                        COLUMN_PREVENTION + " TEXT)";
     }
+
+//    public static final class BreedsEntry implements BaseColumns {
+//
+//        public static final String TABLE_NAME = "breeds";
+//        public static final String COLUMN_DESCRIPTION = "description";
+//        public static final String COLUMN_IMAGE = "image";
+//        public static final String COLUMN_BREED = "breed";
+//        public static final String COLUMN_PURPOSE = "purpose";
+//        public static final String COLUMN_EXAMPLES = "examples";
+//        public static final String COLUMN_CHARACTERISTICS = "characteristics";
+//
+//        //         CREATE INDEX breed_info_index1 ON breed_info (course_title)
+//        public static final String INDEX1 = TABLE_NAME + "_index1";
+//        public static final String SQL_CREATE_INDEX1 =
+//                "CREATE INDEX " + INDEX1 + " ON " + TABLE_NAME +
+//                        "(" + COLUMN_BREED + ")";
+//
+//        public static String getQName(String columnName) {
+//            return TABLE_NAME + "." + columnName;
+//        }
+//
+//        public static final String SQL_CREATE_TABLE =
+//                "CREATE TABLE " + TABLE_NAME + "(" +
+//                        _ID + " INTEGER PRIMARY KEY," +
+//                        COLUMN_DESCRIPTION + " TEXT," +
+//                        COLUMN_IMAGE + " INT,"+
+//                        COLUMN_BREED + " TEXT," +
+//                        COLUMN_PURPOSE + " TEXT," +
+//                        COLUMN_EXAMPLES + " TEXT," +
+//                        COLUMN_CHARACTERISTICS + " TEXT)";
+//    }
+
 
     public static final class BestPracticeEntry implements BaseColumns {
         public static final String TABLE_NAME = "bestPractice";

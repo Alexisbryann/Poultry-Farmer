@@ -88,7 +88,6 @@ public class BreedsExamplesRecyclerAdapter extends RecyclerView.Adapter<BreedsEx
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
 
-
         private final TextView mTextCharacteristics;
         private final TextView mTextExample;
         private final TextView mTextPurpose;

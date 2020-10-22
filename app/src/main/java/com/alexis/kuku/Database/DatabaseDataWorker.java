@@ -210,16 +210,21 @@ public class DatabaseDataWorker {
     public void insertBadHabits(){
         insertBadHabit("Egg eating by chicken.\n",
 
-                " Sometimes birds develop the tendency to eat their own eggs.\n",
+                R.drawable.egg_eating,
 
-                "\u2714 It may start due to the presence of cracked eggs or accidental breaking of eggs and once" +
+                "WHAT IS IT? \n" +
+                        "Sometimes birds develop the tendency to eat their own eggs.\n",
+
+                " CAUSES. \n" +
+                        "\u2714 It may start due to the presence of cracked eggs or accidental breaking of eggs and once" +
                         " the birds develop taste for it they start breaking their own eggs.\n" +
                         "\u2714 Factors responsible for breaking of egg or cracking of egg are thin or soft egg shell" +
                         " or lack of sufficient bedding material in the laying area.\n" +
                         "\u2714 Presence of eggs for longer period in the coop may also encourage the birds to start egg eating.\n" +
                         "\u2714 Nutritional deficiency, especially absence of calcium and vitamin D.\n ",
 
-                "\u2714 Isolate the birds which have developed this habit. \n" +
+                " PREVENTION.\n" +
+                        "\u2714 Isolate the birds which have developed this habit. \n" +
                             "\u2714 In consultation with the expert, the quantity of lime stone and protein should be increased in the diet. \n" +
                             "\u2714 Egg eaters should be kept in a cage in which egg rolls away, beyond the reach of the bird after laying of the eggs due to slope.\n " +
                             "\u2714 De-beaking also reduces this tendency. \n" +
@@ -228,42 +233,53 @@ public class DatabaseDataWorker {
 
         insertBadHabit("Cannibalism.",
 
-                "\u2714 Cannibalism is a condition in which birds of a flock attack their pen mate and eat its flesh," +
+                R.drawable.cannibalism,
+
+                " WHAT IS IT? \n" +
+                        "\u2714 Cannibalism is a condition in which birds of a flock attack their pen mate and eat its flesh," +
                         "which may impose deep wounds and heavy mortality.\n" +
                         "\u2714 Pecking is common in laying birds. Once the birds adopt this vice it spreads rapidly through the flock.\n" +
                         "\u2714 Poultry farmer must remain vigilant to prevent cannibalism as it has got no direct treatment.\n" +
                         "\u2714 Presence of wounded or dead birds which are showing wound but otherwise appear healthy are indicative of cannibalism.\n",
 
-                "\u2714 Overcrowding.\n" +
+                " CAUSES. \n" +
+                        "\u2714 Overcrowding.\n" +
                         "\u2714 Bleeding in the external genitalia due to laying of large eggs.\n" +
                         "\u2714 Protein deficiency in the diet or provision of feeds or feeding/drinking space.\n" +
                         "\u2714 Lack of properly designed nest boxes.\n" +
                         "\u2714 Too much heat.\n" +
                         "\u2714 Loss of feathers from the body or bleeding from the skin due to parasitic infestation.\n" +
                         "\u2714 Wounds inflicted by fighting between the birds.\n",
-                "\u2714 De-beaking, which can be done right from the day old chicks to any age." +
-                        " One- third of the upper beak and tip of the lower beak is to be trimmed." +
+                " PREVENTION.\n" +
+                        "\u2714 De-beaking, which can be done right from the day old chicks to any age." +
+                        " One- third of the upper beak and tip of the lower beak is to be trimmed.\n" +
                         "\u2714 To stop bleeding after de-beaking, hot iron rod is touched at the site of cut." +
-                        "De-beaking must be performed by a competent and trained person, otherwise there may be excessive bleeding and the bird may die due to starvation." +
-                        "\u2714 Birds involved in cannibalism must be isolated and culled to stop this vice." +
-                        "\u2714 Provision of adequate feeders and drinkers." +
-                        "\u2714 Controlling stock density so that birds have adequate floor space for feeding, watering and exercise.");
+                        "De-beaking must be performed by a competent and trained person, otherwise there may be excessive bleeding and the bird may die due to starvation.\n" +
+                        "\u2714 Birds involved in cannibalism must be isolated and culled to stop this vice.\n" +
+                        "\u2714 Provision of adequate feeders and drinkers.\n" +
+                        "\u2714 Controlling stock density so that birds have adequate floor space for feeding, watering and exercise.\n");
 
         insertBadHabit("Egg hiding.",
 
-                "Poultry birds can hide the eggs in the field, bushes etc.\n",
+                R.drawable.egg_hiding,
 
-                "\u2714 This habit may develop in the domestic fowl which are allowed ample freedom of movement.\n",
+                " WHAT IS IT? \n"  +
+                        "Poultry birds can hide the eggs in the field, bushes etc.\n",
 
-                "\u2714 Restrict freedom of movement of the birds.\n" +
+                " CAUSES. \n" +
+                        "\u2714 This habit may develop in the domestic fowl which are allowed ample freedom of movement.\n",
+
+                " PREVENTION.\n" +
+                        "\u2714 Restrict freedom of movement of the birds.\n" +
                         "\u2714 Laying area should be built inside poultry house and made comfortable by providing sawdust, dry grass etc.");
 
     }
-    private void insertBadHabit(String habit, String description, String causes, String prevention){
+    private void insertBadHabit(String habit, int image, String description, String causes, String prevention){
 
         ContentValues values = new ContentValues();
 
         values.put(DataBaseContract.BadHabitsEntry.COLUMN_HABIT,habit);
+        values.put(DataBaseContract.BadHabitsEntry.COLUMN_IMAGE,image);
         values.put(DataBaseContract.BadHabitsEntry.COLUMN_DESCRIPTION,description);
         values.put(DataBaseContract.BadHabitsEntry.COLUMN_CAUSES,causes);
         values.put(DataBaseContract.BadHabitsEntry.COLUMN_PREVENTION,prevention);

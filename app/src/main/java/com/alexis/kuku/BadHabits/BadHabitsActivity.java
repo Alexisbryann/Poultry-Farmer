@@ -1,13 +1,16 @@
 package com.alexis.kuku.BadHabits;
 
-import android.content.Intent;
+import android.annotation.SuppressLint;
+import android.content.CursorLoader;
+import android.content.Loader;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
+import android.app.LoaderManager;
 
-import com.alexis.kuku.BestPractice.BestPracticeActivity;
-import com.alexis.kuku.Brooding.BroodingActivity;
-import com.alexis.kuku.HousingAndEquipment.HousingAndEquipmentActivity;
-import com.alexis.kuku.PoultryHealthManagement.PoultryHealthManagementActivity;
-import com.alexis.kuku.PoultryManagement.PoultryManagementActivity;
+import com.alexis.kuku.Database.DataBaseContract;
+import com.alexis.kuku.Database.DataBaseOpenHelper;
+import com.alexis.kuku.Database.DataManager;
 import com.alexis.kuku.R;
 import com.google.android.material.navigation.NavigationView;
 
@@ -18,108 +21,98 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.navigation.ui.AppBarConfiguration;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
-import android.util.Log;
 import android.view.Menu;
-import android.view.MenuItem;
-import android.widget.Toast;
 
-public class BadHabitsActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
+import static com.alexis.kuku.Database.DataBaseContract.*;
 
+public class BadHabitsActivity extends AppCompatActivity implements LoaderManager.LoaderCallbacks<Cursor> {
+
+    public static final int LOADER_BAD_HABITS = 0;
     private AppBarConfiguration mAppBarConfiguration;
     private DrawerLayout mDrawer;
-    private final String TAG = getClass().getSimpleName();
+    private DataBaseOpenHelper mDbOpenHelper;
+    private RecyclerView mRecyclerBadHabits;
+    private LinearLayoutManager mLayoutManagerBadHabits;
+    private BadHabitsRecyclerAdapter mBadHabitsRecyclerAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_bad_habits);
-        Toolbar toolbar = findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
-        Log.d(TAG,"poultry bad habits toolbar inflated");
+        setContentView(R.layout.content_bad_habits);
 
-        NavigationView navigationView = findViewById(R.id.nav_view);
-        mDrawer = findViewById(R.id.drawer_layout);
-        Log.d(TAG,"nav view inflated on poultry bad habits");
-
-
-        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
-                this, mDrawer,toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
-        mDrawer.bringToFront();
-
-        toggle.syncState();
-
-        navigationView.setNavigationItemSelectedListener(this);
-        mAppBarConfiguration = new AppBarConfiguration.Builder().setOpenableLayout(mDrawer).build();
+        mDbOpenHelper = new DataBaseOpenHelper(this);
+        initializeDisplayContent();
 
     }
+
     @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.main, menu);
-        return true;
+    protected void onDestroy() {
+        mDbOpenHelper.close();
+        super.onDestroy();
     }
     @Override
-    public void onBackPressed() {
-        if (mDrawer.isDrawerOpen(GravityCompat.START)) {
-            mDrawer.closeDrawer(GravityCompat.START);
-        } else {
-            super.onBackPressed();
+    protected void onResume() {
+        super.onResume();
+        mBadHabitsRecyclerAdapter.notifyDataSetChanged();
+        getLoaderManager().restartLoader(LOADER_BAD_HABITS, null, this);
+
+    }
+
+    private void initializeDisplayContent() {
+        DataManager.loadFromDatabase(mDbOpenHelper);
+
+        mRecyclerBadHabits = findViewById(R.id.rv_bad_habits);
+        mLayoutManagerBadHabits = new LinearLayoutManager(this);
+        mBadHabitsRecyclerAdapter = new BadHabitsRecyclerAdapter(this,null);
+
+        displayBadHabits();
+    }
+
+    private void displayBadHabits() {
+    mRecyclerBadHabits.setLayoutManager(mLayoutManagerBadHabits);
+    mRecyclerBadHabits.setAdapter(mBadHabitsRecyclerAdapter);
+    }
+
+    @SuppressLint("StaticFieldLeak")
+    @Override
+    public Loader<Cursor> onCreateLoader(int id, Bundle bundle) {
+        CursorLoader loader = null;
+        if (id == LOADER_BAD_HABITS) {
+            loader = new CursorLoader(this) {
+                @Override
+                public Cursor loadInBackground() {
+                    SQLiteDatabase db = mDbOpenHelper.getReadableDatabase();
+                    final String[] Columns = {
+                            BadHabitsEntry.getQName(BadHabitsEntry._ID),
+                            BadHabitsEntry.COLUMN_HABIT,
+                            BadHabitsEntry.COLUMN_IMAGE,
+                            BadHabitsEntry.COLUMN_CAUSES,
+                            BadHabitsEntry.COLUMN_DESCRIPTION,
+                            BadHabitsEntry.COLUMN_PREVENTION};
+
+                    final String OrderBy = BadHabitsEntry.COLUMN_HABIT;
+                    return db.query(BadHabitsEntry.TABLE_NAME, Columns, null, null, null, null, OrderBy);
+                }
+            };
+        }
+
+        return loader;
+    }
+
+    @Override
+    public void onLoadFinished(Loader<Cursor> loader, Cursor data) {
+        if (loader.getId() == LOADER_BAD_HABITS) {
+            mBadHabitsRecyclerAdapter.changeCursor(data);
         }
     }
+
     @Override
-    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-
-        Log.d(TAG,"Bad habits Navigation drawer opened");
-
-        if (item.getItemId() == R.id.nav_brooding) {
-            Toast.makeText(this,"BROODING",Toast.LENGTH_SHORT).show();
-            Intent brooding = new Intent(this, BroodingActivity.class);
-            startActivity(brooding);
-            overridePendingTransition(android.R.anim.fade_in,android.R.anim.fade_out);
-            mDrawer.closeDrawer(GravityCompat.START);
-            finish();
-            return true;
-        }else if (item.getItemId()==R.id.nav_housing_and_equipment){
-            Toast.makeText(this,"HOUSING AND EQUIPMENT",Toast.LENGTH_SHORT).show();
-            Intent housing = new Intent(this, HousingAndEquipmentActivity.class);
-            startActivity(housing);
-            overridePendingTransition(android.R.anim.fade_in,android.R.anim.fade_out);
-            mDrawer.closeDrawer(GravityCompat.START);
-            finish();
-            return true;
-        }else if (item.getItemId()==R.id.nav_poultry_management){
-            Toast.makeText(this,"POULTRY MANAGEMENT",Toast.LENGTH_SHORT).show();
-            Intent management = new Intent(this, PoultryManagementActivity.class);
-            startActivity(management);
-            overridePendingTransition(android.R.anim.fade_in,android.R.anim.fade_out);
-            mDrawer.closeDrawer(GravityCompat.START);
-            finish();
-            return true;
-        }else if (item.getItemId()==R.id.nav_common_diseases){
-            Toast.makeText(this,"COMMON DISEASES", Toast.LENGTH_SHORT).show();
-            Intent commonDiseases = new Intent(this, PoultryHealthManagementActivity.class);
-            startActivity(commonDiseases);
-            overridePendingTransition(android.R.anim.fade_in,android.R.anim.fade_out);
-            mDrawer.closeDrawer(GravityCompat.START);
-            finish();
-            return true;
-        }else if (item.getItemId()==R.id.nav_best_practice){
-            Toast.makeText(this,"BEST PRACTICE", Toast.LENGTH_SHORT).show();
-            Intent bestPractice = new Intent(this, BestPracticeActivity.class);
-            startActivity(bestPractice);
-            overridePendingTransition(android.R.anim.fade_in,android.R.anim.fade_out);
-            mDrawer.closeDrawer(GravityCompat.START);
-            finish();
-            return true;
-        }else if (item.getItemId()==R.id.nav_bad_habits){
-            Toast.makeText(this,"BAD HABITS", Toast.LENGTH_SHORT).show();
-            Intent badHabits = new Intent(this, BadHabitsActivity.class);
-            startActivity(badHabits);
-            overridePendingTransition(android.R.anim.fade_in,android.R.anim.fade_out);
-            mDrawer.closeDrawer(GravityCompat.START);
-            finish();
-            return true;
+    public void onLoaderReset(Loader<Cursor> loader) {
+        if (loader.getId() == LOADER_BAD_HABITS) {
+            mBadHabitsRecyclerAdapter.changeCursor(null);
         }
-        return false;
     }
 }

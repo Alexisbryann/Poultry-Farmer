@@ -100,7 +100,6 @@ public class BreedsExamplesActivity extends AppCompatActivity implements LoaderM
         if (loader.getId()== LOADER_BREEDS_EXAMPLE) {
             mBreedsExamplesRecyclerAdapter.changeCursor(null);
         }
-
     }
 
 }
