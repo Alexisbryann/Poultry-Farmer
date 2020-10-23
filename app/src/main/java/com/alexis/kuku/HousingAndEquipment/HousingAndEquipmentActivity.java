@@ -95,7 +95,7 @@ public class HousingAndEquipmentActivity extends AppCompatActivity implements Na
             mDrawer.closeDrawer(GravityCompat.START);
             finish();
             return true;
-        }else if (item.getItemId()==R.id.nav_common_diseases){
+        }else if (item.getItemId()==R.id.nav_poultry_health_management){
             Toast.makeText(this,"COMMON DISEASES", Toast.LENGTH_SHORT).show();
             Intent commonDiseases = new Intent(this, PoultryHealthManagementActivity.class);
             startActivity(commonDiseases);

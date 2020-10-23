@@ -1,4 +1,5 @@
 <resources>
+
     <string name="app_name">Poultry farming</string>
     <string name="title_activity_main">MainActivity</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>
@@ -13,7 +14,7 @@
     <string name="housing_and_equipment">Housing and equipment</string>
     <string name="breed">Breed</string>
     <string name="poultry_management">Poultry management</string>
-    <string name="common_diseases">Common diseases</string>
+    <string name="poultry_health_management">Poultry health management</string>
     <string name="bad_habits">Bad habits</string>
     <string name="best_practice">Best practice</string>
     <string name="title_activity_common_diseases">COMMON DISEASES</string>
