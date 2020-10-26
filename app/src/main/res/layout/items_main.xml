@@ -23,7 +23,6 @@
             app:cardBackgroundColor="@color/colorPrimary"
             app:cardCornerRadius="8dp"
             app:cardElevation="2dp"
-            app:cardUseCompatPadding="false"
             app:contentPadding="2dp">
 
             <androidx.constraintlayout.widget.ConstraintLayout
@@ -53,7 +52,7 @@
                     android:gravity="fill"
                     android:text="@string/main_description"
                     android:textAppearance="@style/TextAppearance.AppCompat.Body2"
-                    android:textSize="18sp"
+                    android:textSize="20sp"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="1.0"

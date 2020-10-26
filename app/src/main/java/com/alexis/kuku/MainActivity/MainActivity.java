@@ -32,6 +32,8 @@ import com.alexis.kuku.HousingAndEquipment.HousingAndEquipmentActivity;
 import com.alexis.kuku.PoultryHealthManagement.PoultryHealthManagementActivity;
 import com.alexis.kuku.PoultryManagement.PoultryManagementActivity;
 import com.alexis.kuku.R;
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
 import com.google.android.material.navigation.NavigationView;
 
 import static com.alexis.kuku.Database.DataBaseContract.*;
@@ -46,6 +48,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     private RecyclerView mRecyclerItems;
     private LinearLayoutManager mMainLayoutManager;
     private DataBaseOpenHelper mDbOpenHelper;
+    private AdView mAdView;
+    private AdRequest mAdRequest;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -58,7 +62,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
         Log.d(TAG,"Main toolbar");
 
-
         mDrawer = findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this, mDrawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
@@ -69,6 +72,11 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         navigationView.setNavigationItemSelectedListener(this);
 
         mDbOpenHelper = new DataBaseOpenHelper(this);
+
+        mAdView = findViewById(R.id.adView);
+        mAdRequest = new AdRequest.Builder().build();
+        mAdView.loadAd(mAdRequest);
+
         initializeDisplayContent();
     }
 

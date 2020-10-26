@@ -12,6 +12,8 @@ import com.alexis.kuku.Database.DataBaseContract;
 import com.alexis.kuku.Database.DataBaseOpenHelper;
 import com.alexis.kuku.Database.DataManager;
 import com.alexis.kuku.R;
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
 import com.google.android.material.navigation.NavigationView;
 
 import androidx.annotation.NonNull;
@@ -42,8 +44,8 @@ public class BadHabitsActivity extends AppCompatActivity implements LoaderManage
         setContentView(R.layout.content_bad_habits);
 
         mDbOpenHelper = new DataBaseOpenHelper(this);
-        initializeDisplayContent();
 
+        initializeDisplayContent();
     }
 
     @Override

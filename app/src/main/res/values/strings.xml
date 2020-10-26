@@ -47,5 +47,13 @@
     <string name="text_view_measures">Measures</string>
     <string name="best_practice_">POULTRY BIO-SECURITY.</string>
     <string name="best_practice_description">Achieving good bird, barn and gut health requires operational excellence and attention to detail. A combination of quality nutrition, veterinary guidance and increased consideration of barn and bird management will help to ensure birds have the best possible chance to perform at their maximum potential. Some critical focus areas are as follows:</string>
+<!--Admob strings-->
+    <string name="banner_ad_unit_id">ca-app-pub-3940256099942544/6300978111</string>
+    <string name="why_brood">why brood?</string>
+    <string name="what_is_brooding">What is brooding</string>
+    <string name="natural_brooding">Natural brooding</string>
+    <string name="natural_brooding_description">Natural brooding description</string>
+    <string name="a_hen_brooding">A hen brooding</string>
+    <string name="artificial_brooding">Artificial brooding</string>
 
 </resources>
