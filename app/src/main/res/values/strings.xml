@@ -55,5 +55,6 @@
     <string name="natural_brooding_description">Natural brooding description</string>
     <string name="a_hen_brooding">A hen brooding</string>
     <string name="artificial_brooding">Artificial brooding</string>
+    <string name="factors_to_consider_when_brooding">Factors to consider when brooding</string>
 
 </resources>
